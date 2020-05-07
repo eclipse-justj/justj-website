@@ -1,23 +1,20 @@
 <?php
-/*******************************************************************************
- * Copyright (c) 2014 Eclipse Foundation and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://eclipse.org/legal/epl-v10.html
+/**
+ * Copyright (c) 2014-2017, 2018 Eclipse Foundation and others.
+ *
+ * This program and the accompanying materials are made
+ * available under the terms of the Eclipse Public License 2.0
+ * which is available at https://www.eclipse.org/legal/epl-2.0/
  *
  * Contributors:
- *    Christopher Guindon (Eclipse Foundation) - Initial implementation
- *******************************************************************************/
+ * Christopher Guindon (Eclipse Foundation) - Initial implementation
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ */
 
-  # Set the theme for your project's web pages.
-  # See the Committer Tools "Phoenix" secion in the How Do I? for list of themes
-  # https://dev.eclipse.org/committers/
-  $theme = "solstice";
+  $Nav->addNavSeparator("JustJ", "//eclipse.org/projects/project.php?id=technology.justj");
 
-  # Define your project-wide Nav bars here.
-  # Format is Link text, link URL (can be http://www.someothersite.com/), target (_self, _blank).
-  $Nav->addNavSeparator("Solstice",   "/eclipse.org-common/themes/solstice/docs/");
-  $Nav->addCustomNav("Documentation", "/eclipse.org-common/themes/solstice/docs/", "_self", NULL);
-  $Nav->addCustomNav("Source code", "http://git.eclipse.org/c/www.eclipse.org/eclipse.org-common.git/tree/themes/solstice/", "_self", NULL);
-  $Nav->addCustomNav("Using Phoenix", "http://wiki.eclipse.org/Using_Phoenix", "_self", NULL);
+  $Nav->addCustomNav("Documentation", ".?page=documentation", "_self", NULL);
+  $Nav->addCustomNav("Ask a Question", "//www.eclipse.org/forums/index.php/f/532/", "_blank", NULL);
+  $Nav->addCustomNav("Report a Problem", "//bugs.eclipse.org/bugs/enter_bug.cgi?product=Justj", "_blank", NULL);
+?>

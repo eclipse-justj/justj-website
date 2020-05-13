@@ -122,8 +122,8 @@ $links[] = array(
 $variables['header_nav'] = array(
   'links' => $links, // Required
   'logo' => array( // Required
-    // 'src' => 'justj_incubation.svg', // Required
-    'src' => 'justj.svg', // Required
+    'src' => 'justj_incubation.svg', // Required
+    // 'src' => 'justj.svg', // Required
     'style' => 'foo-bar',
     'alt' => 'The Eclipse JustJ Project Portal', // Optional
     'url' => '//eclipse.org/projects/project.php?id=technology.justj', // Optional

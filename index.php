@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2017, 2018 Eclipse Foundation and others.
+ * Copyright (c) 2014-2017, 2020 Eclipse Foundation and others.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
@@ -15,11 +15,6 @@
 
 error_reporting(0);
 $page = $_GET["page"];
-if (!$page) {
-  header('Location: https://eclipse.org/projects/project.php?id=technology.justj');
-  exit;
-}
-
 $host = $_SERVER['DOCUMENT_ROOT'];
 require_once($host . "/eclipse.org-common/system/app.class.php");
 require_once($host . "/eclipse.org-common/system/nav.class.php");

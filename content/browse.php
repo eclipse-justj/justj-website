@@ -125,4 +125,7 @@ foreach ($segments as $segment) {
 }
 
 listFolderFiles($url, $baseURL, $file, realpath("."));
+listFolderFiles($url, $baseURL, $file, realpath("/localsite"));
+listFolderFiles($url, $baseURL, $file, realpath("/localsite/download.eclipse.org"));
+listFolderFiles($url, $baseURL, $file, realpath("/localsite/download.eclipse.org/justj"));
 ?>

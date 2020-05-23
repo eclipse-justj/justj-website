@@ -1,5 +1,4 @@
 <?php
-$url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
 
 $style = <<<EOSTYLE
 
@@ -125,10 +124,5 @@ foreach ($segments as $segment) {
   $Breadcrumb->addCrumb($segment, "?file=" . $link, "_self");
 }
 
-listFolderFiles($url, $baseURL, $file, "/");
-listFolderFiles($url, $baseURL, $file, "/home");
-listFolderFiles($url, $baseURL, $file, "/home/data");
-listFolderFiles($url, $baseURL, $file, "/home/data/httpd");
-listFolderFiles($url, $baseURL, $file, "/home/data/httpd/download.eclipse.org");
-
+listFolderFiles($url, $baseURL, $file, realpath("."));
 ?>

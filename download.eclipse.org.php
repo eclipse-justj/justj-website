@@ -26,37 +26,11 @@ $Nav  = new Nav();
 $Theme = $App->getThemeClass();
 $Breadcrumb = new Breadcrumb();
 
-// Shared variables/configs for all pages of your website.
-require_once ('_projectCommon.php');
-
-
 $Breadcrumb->removeCrumb($Breadcrumb->getCrumbCount() - 1);
 $Breadcrumb->addCrumb("JustJ", ".?page=index", "_self");
+$Breadcrumb->addCrumb("Download", "index.php?page=download", "_self");
 
-$pageTitle = "JustJ";
-$contentScript = 'en_index.php';
-
-if (!$page) {
-  $page = "index";
-}
-
-if ($page == "download") {
-  $pageTitle .= " Downloads";
-  $contentScript = "download.php";
-  $Breadcrumb->addCrumb("Download", ".?page=download", "_self");
-} else if ($page == "developer") {
-  $pageTitle .= " Getting Involved";
-  $contentScript = "developer.php";
-  $Breadcrumb->addCrumb("Getting Involved", ".?page=developer", "_self");
-} else if ($page == "documentation") {
-  $pageTitle .= " Documentation";
-  $contentScript = "documentation.php";
-  $Breadcrumb->addCrumb("Documentation", ".?page=documentation", "_self");
-} else if ($page == "support") {
-  $pageTitle .= " Support";
-  $contentScript = "support.php";
-  $Breadcrumb->addCrumb("Support", ".?page=support", "_self");
-}
+$pageTitle = "JustJ Downloads";
 
 $pageAuthor = 'Ed Merks';
 $pageKeywords = 'justj,jdk,jre';
@@ -79,53 +53,6 @@ $variables['main_container_classes'] = 'container';
 // Insert HTML after opening the main content container, before the left sidebar. (String)
 $variables['main_container_html'] = '';
 
-// Insert header navigation for project websites.
-// Bug 436108 - https://bugs.eclipse.org/bugs/show_bug.cgi?id=436108
-$links = array();
-$links[] = array(
-  'icon' => 'fa-download', // Required
-  'url' => '.?page=download', // Required
-  'title' => 'Download', // Required
-  // 'target' => '_blank', // Optional
-  'text' => 'Distributions, Update Sites' // Optional
-);
-
-$links[] = array(
-  'icon' => 'fa-users', // Required
-  'url' => '?page=developer', // Required
-  'title' => 'Geting Involved', // Required
-  // 'target' => '_blank', // Optional
-  'text' => 'Git, Workspace Setup, Wiki, Committers' // Optional
-);
-
-$links[] = array(
-  'icon' => 'fa-book', // Required
-  'url' => '?page=documentation', // Required
-  'title' => 'Documentation', // Required
-  // 'target' => '_blank', // Optional
-  'text' => 'Tutorials, Examples, Videos, Online Reference' // Optional
-);
-
-$links[] = array(
-  'icon' => 'fa-support', // Required
-  'url' => '?page=support', // Required
-  'title' => 'Support', // Required
-  // 'target' => '_blank', // Optional
-  'text' => 'Bug Tracker, Forum, Professional Support' // Optional
-);
-
-$variables['header_nav'] = array(
-  'links' => $links, // Required
-  'logo' => array( // Required
-    'src' => 'justj_incubation.svg', // Required
-    // 'src' => 'justj.svg', // Required
-    'style' => 'foo-bar',
-    'alt' => 'The Eclipse JustJ Project Portal', // Optional
-    'url' => '//eclipse.org/projects/project.php?id=technology.justj', // Optional
-    'target' => '_blank' // Optional
-  )
-);
-
 // CFA Link - Big orange button in header
 $variables['btn_cfa'] = array(
   'hide' => FALSE, // Optional - Hide the CFA button.
@@ -138,26 +65,25 @@ $variables['btn_cfa'] = array(
 // Set Solstice theme variables. (Array)
 $App->setThemeVariables($variables);
 
-// Place your html content in a file called content/en_pagename.php
+$query = $_SERVER['"QUERY_STRING"'];
 ob_start();
-include ("content/" . $contentScript);
+include ("content/browse.php" . (empty($query) ? "" : "?$query"));
 $html = ob_get_clean();
+
+if (false) {
+  ob_start();
+  var_dump($_SERVER);
+  echo "<br>hello<br>";
+  $html = ob_get_clean() . $html;
+}
 
 // Insert extra html before closing </head> tag.
 // Use our own favicon
 $App->AddExtraHtmlHeader('<link rel="shortcut icon" href="justj_favicon.ico"/>');
 
-// $script = <<<EOSCRIPT
-// EOHTML
-
 $style = <<<EOSTYLE
 
 <style>
-
-.header_nav {
-    padding-bottom: 10px;
-}
-
 code a {
  text-decoration: underline;
  text-decoration-color: pink;
@@ -166,7 +92,6 @@ code a {
 code a:link, code a:visited {
   color: inherit;
 }
-
 </style>
 
 EOSTYLE;

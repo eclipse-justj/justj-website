@@ -56,6 +56,7 @@ function convert_filesize($bytes, $decimals = 2){
 }
 
 function listFolderFiles($actualURL, $baseURL, $basePath, $dir) {
+    echo "$dir<br/>";
     echo "<table style='width: 100%;'><tr><th style='width: 60%'>File</th><th style='text-align: right; width: 10%; margin-left: 50px;'>Size</th><th style='width: 30%; text-align: right; margin-left: 50px;'>Date<span style='margin-right: 4em;'/></th></tr>";
     $files = scandir($dir);
 
@@ -123,5 +124,11 @@ foreach ($segments as $segment) {
 
   $Breadcrumb->addCrumb($segment, "?file=" . $link, "_self");
 }
+
+listFolderFiles($url, $baseURL, $file, "/");
+listFolderFiles($url, $baseURL, $file, "/home");
+listFolderFiles($url, $baseURL, $file, "/home/data");
+listFolderFiles($url, $baseURL, $file, "/home/data/httpd");
+listFolderFiles($url, $baseURL, $file, "/home/data/httpd/download.eclipse.org");
 
 ?>

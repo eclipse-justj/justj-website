@@ -13,7 +13,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-error_reporting(0);
+error_reporting(E_ALL);
 $page = $_GET["page"];
 $host = $_SERVER['DOCUMENT_ROOT'];
 require_once($host . "/eclipse.org-common/system/app.class.php");

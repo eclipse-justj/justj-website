@@ -15,10 +15,23 @@
 
 error_reporting(0);
 $page = $_GET["page"];
+if (!$page) {
+  $page = "index";
+}
+
 $serverName = $_SERVER['SERVER_NAME'];
-if ($page == "download" && $serverName != "localhost") {
-  header('Location: https://download.eclipse.org/justj/www/index.php?page=download');
-  exit;
+if ($serverName != "localhost") {
+  if ($page == "download") {
+     // Downloads must be served download.eclipse.org
+     if ($serverName != "download.eclipse.org") {
+       header('Location: https://download.eclipse.org/justj/www/?page=download');
+       exit;
+     }
+  } else if ($serverName != "www.eclipse.org") {
+    // The other pages are best served by www.eclipse.org.
+    header('Location: https://www.eclipse.org/justj/?page=' . $page);
+    exit;
+  }
 }
 
 $host = $_SERVER['DOCUMENT_ROOT'];
@@ -41,10 +54,6 @@ $Breadcrumb->addCrumb("JustJ", ".?page=index", "_self");
 
 $pageTitle = "JustJ";
 $contentScript = 'en_index.php';
-
-if (!$page) {
-  $page = "index";
-}
 
 if ($page == "download") {
   $pageTitle .= " Downloads";

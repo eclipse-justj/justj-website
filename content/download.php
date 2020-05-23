@@ -18,7 +18,7 @@
 
   <h3>JustJ Tools Updates</h3>
 
-  <code><a href="https://download.eclipse.org/justj/tools/updates/">https://download.eclipse.org/justj/tools/updates/</a></code>.
+  <code><a href="https://download.eclipse.org/justj/tools/updates/">https://download.eclipse.org/justj/tools/updates/</a></code>
 
   <h3>Repositories Analyzed for <code>jdeps</code></h3>
 
@@ -29,8 +29,5 @@
   <h2>Low-level File System View</h2>
   <p>
   Browse the <code><a href="download.eclipse.org.php">https://download.eclipse.org/justj</a></code> site.
-  <!--
-  <a class="btn btn-primary btn-lg" href="download.eclipse.org.php">Browse Details https://download.eclipse.org/justj</a>
-  -->
   </p>
 </div>

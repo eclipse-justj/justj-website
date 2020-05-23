@@ -27,10 +27,12 @@ $App->AddExtraHtmlHeader($style);
 
 $debug = false;
 
-$projectName = dirname($_SERVER['SCRIPT_NAME']);
+$scriptName = $_SERVER['SCRIPT_NAME'];
+$scriptPath = dirname($scriptName);
+$projectName = substr($scriptName, 0, strpos($scriptName, '/', 1));
 $serverName = $_SERVER['SERVER_NAME'];
 
-$baseURL = '//' . $serverName . $projectName . '/download.eclipse.org.php?file=';
+$baseURL = '//' . $serverName . $scriptPath . '/download.eclipse.org.php?file=';
 if ($debug) echo "<br/>baseURL=$baseURL<br/>";
 
 
@@ -43,7 +45,7 @@ $path = preg_replace('%[.][.]%', '', $path);
 $url = 'https://download.eclipse.org' . $path;
 echo '<h3 style="margin-top: 0;"><a href="' . $url . '">' . $url . '</a></h3>';
 
-$targetFolder = '/home/data/httpd/download.eclipse.org/' . $path;
+$targetFolder = '/localsite/download.eclipse.org/' . $path;
 $targetFolder = preg_replace('/\\/+/', '/', $targetFolder);
 
 if ($debug) echo "<br/>$targetFolder<br/>";
@@ -55,7 +57,7 @@ function convert_filesize($bytes, $decimals = 2){
 }
 
 function listFolderFiles($actualURL, $baseURL, $basePath, $dir) {
-    echo "$dir<br/>";
+    if ($debug) echo "$dir<br/>";
     echo "<table style='width: 100%;'><tr><th style='width: 60%'>File</th><th style='text-align: right; width: 10%; margin-left: 50px;'>Size</th><th style='width: 30%; text-align: right; margin-left: 50px;'>Date<span style='margin-right: 4em;'/></th></tr>";
     $files = scandir($dir);
 
@@ -124,8 +126,4 @@ foreach ($segments as $segment) {
   $Breadcrumb->addCrumb($segment, "?file=" . $link, "_self");
 }
 
-listFolderFiles($url, $baseURL, $file, realpath("."));
-listFolderFiles($url, $baseURL, $file, realpath("/localsite"));
-listFolderFiles($url, $baseURL, $file, realpath("/localsite/download.eclipse.org"));
-listFolderFiles($url, $baseURL, $file, realpath("/localsite/download.eclipse.org/justj"));
 ?>

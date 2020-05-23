@@ -1,5 +1,5 @@
 <?php
-$jres_folder = '/home/data/httpd/download.eclipse.org/justj/sandbox/jres';
+$jres_folder = '/localsite/download.eclipse.org/justj/sandbox/jres';
 $jres = scandir($jres_folder);
 unset($jres[array_search('.', $jres, true)]);
 unset($jres[array_search('..', $jres, true)]);

@@ -15,6 +15,12 @@
 
 error_reporting(0);
 $page = $_GET["page"];
+$serverName = $_SERVER['SERVER_NAME'];
+if ($page == "download" && $serverName != "localhost") {
+  header('Location: https://download.eclipse.org/justj/www/index.php?page=download');
+  exit;
+}
+
 $host = $_SERVER['DOCUMENT_ROOT'];
 require_once($host . "/eclipse.org-common/system/app.class.php");
 require_once($host . "/eclipse.org-common/system/nav.class.php");

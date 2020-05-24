@@ -98,6 +98,7 @@ as well as details about the contents and the runtime characteristics.
 You will see there that a full, compressed JRE, i.e., those JREs with the <code>.jre.full</code> qualifier, are roughly 70MB is size,
 while an absolutely minimal, compressed, OSGi-capable JRE, i.e., those JREs with the <code>.jre.base</code> qualifier, are roughly  20MB is size.
 These sizes are significantly (15% to 20%) reduced by stripping debug information, i.e., those JREs with the <code>.stripped</code> qualifier.
+See the <a href="?page=documentation#jdeps">Building Smaller JREs with <code>jdeps</code></a> section for details about creating JREs with a subset of the available modules.
 <p>
 
 <p>

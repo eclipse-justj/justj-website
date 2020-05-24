@@ -196,6 +196,10 @@ code a:link, code a:visited {
   text-indent:-4em;
 }
 
+blockquote {
+  margin: 0 0 10px;
+}
+
 </style>
 
 EOSTYLE;

@@ -54,9 +54,17 @@ $targetFolder = '/localsite/download.eclipse.org/' . $path;
 $targetFolder = preg_replace('/\\/+/', '/', $targetFolder);
 
 function convertFileSize($bytes, $decimals = 2){
-    $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+    $size = array('B','kB','<b>MB</b>','<b>GB</b>','<b>TB</b>','<b>PB</b>','<b>EB</b>','<b>ZB</b>','<b>YB</b>');
     $factor = floor((strlen($bytes) - 1) / 3);
-    return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    if ($factor == 0) {
+      $bytes = $bytes / pow(1024, 0);
+      $factor = 1;
+    }
+    $result = sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    //if ($factor == 0) {
+      //$result = preg_replace('%[.]00%', '&nbsp;&nbsp;&nbsp;', $result);
+    // }
+    return $result;
 }
 
 function perms($file) {

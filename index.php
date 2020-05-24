@@ -135,8 +135,8 @@ $variables['header_nav'] = array(
     'src' => 'justj_incubation.svg', // Required
     // 'src' => 'justj.svg', // Required
     'style' => 'foo-bar',
-    'alt' => 'The Eclipse JustJ Project Portal', // Optional
-    'url' => '//eclipse.org/projects/project.php?id=technology.justj', // Optional
+    'alt' => 'The Main Index Page', // Optional
+    'url' => '?page=index', // Optional
     'target' => '_blank' // Optional
   )
 );
@@ -183,6 +183,17 @@ code a:link, code a:visited {
     -webkit-box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
     -moz-box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
     box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
+}
+
+.jre-gen-group {
+  list-style-type: none;
+  padding-left: 1em;
+}
+
+.jre-gen-description {
+  display: inline-block;
+  padding-left: 4em;
+  text-indent:-4em;
 }
 
 </style>

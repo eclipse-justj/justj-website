@@ -185,6 +185,9 @@ In summary, the entire process of building JREs from JDKs and repackaging them i
 This process has been validated using URLs from <a href="https://adoptopenjdk.net/archive.html">https://adoptopenjdk.net/</a> in addition to those those from <a href="https://jdk.java.net">https://jdk.java.net</a>,
 but we do not currently have Eclipse Foundation approval to redistribute results from that source.
 </p>
+<p>
+See the <a href="?page=documentation#jre-gen-anatomy">Anatomy of <code>jre-gen</code></a> section for more details.
+</p>
 
 
 </div>

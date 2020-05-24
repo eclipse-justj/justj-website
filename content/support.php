@@ -23,10 +23,10 @@ Report a <code><a href="https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Just
 
 <h2>Communication</h2>
 <p>
-As a question on the <code><a href="https://www.eclipse.org/forums/index.php/f/532/">JustJ Forum</a></code>.
+Ask a question on the <code><a href="https://www.eclipse.org/forums/index.php/f/532/">JustJ Forum</a></code>.
 </p>
 <p>
-Discuss issues with other project participants on <code><a href="https://accounts.eclipse.org/mailing-list/justj-dev">justj-dev mailing list</a></code>.
+Discuss issues with other project participants on the <code><a href="https://accounts.eclipse.org/mailing-list/justj-dev">justj-dev</a></code> mailing list.
 </p>
 
 <h2>Professional Support</h2>

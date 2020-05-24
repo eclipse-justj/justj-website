@@ -12,7 +12,7 @@
  * SPDX-License-Identifier: EPL-2.0
  */
 
-  $Nav->addNavSeparator("JustJ", "//eclipse.org/projects/project.php?id=technology.justj");
+  $Nav->addNavSeparator("JustJ Project Portal", "//eclipse.org/projects/project.php?id=technology.justj");
 
   $Nav->addCustomNav("Ask a Question", "//www.eclipse.org/forums/index.php/f/532/", "_blank", NULL);
   $Nav->addCustomNav("Report a Problem", "//bugs.eclipse.org/bugs/enter_bug.cgi?product=Justj", "_blank", NULL);

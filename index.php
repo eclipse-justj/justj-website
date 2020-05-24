@@ -162,9 +162,6 @@ $html = ob_get_clean();
 // Use our own favicon
 $App->AddExtraHtmlHeader('<link rel="shortcut icon" href="justj_favicon.ico"/>');
 
-// $script = <<<EOSCRIPT
-// EOHTML
-
 $style = <<<EOSTYLE
 
 <style>
@@ -180,6 +177,12 @@ code a {
 
 code a:link, code a:visited {
   color: inherit;
+}
+
+:target {
+    -webkit-box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
+    -moz-box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
+    box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
 }
 
 </style>

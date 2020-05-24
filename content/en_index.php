@@ -105,7 +105,7 @@ Note that the JREs are currently maintained in the so-called <code>sandbox</code
 Anything under <code>sandbox</code> is <b>transient</b> and is subject to arbitrary change, including removal.
 </p>
 
-<h2>Automated JRE p2 Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/>.tools</h2>
+<h2 id="jre-p2">Automated JRE p2 Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/>.tools</h2>
 
 <p>
 A large portion of Eclipse's ecosystem is based on the Eclipse Platform and uses Equinox p2 for provisioning and updating IDE installations and Rich Client Platform (RCP) applications.

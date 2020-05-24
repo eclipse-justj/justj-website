@@ -14,7 +14,7 @@
  */
 
 error_reporting(0);
-$page = $_GET["page"];
+$all = $_GET["all"];
 $host = $_SERVER['DOCUMENT_ROOT'];
 require_once($host . "/eclipse.org-common/system/app.class.php");
 require_once($host . "/eclipse.org-common/system/nav.class.php");
@@ -27,8 +27,10 @@ $Theme = $App->getThemeClass();
 $Breadcrumb = new Breadcrumb();
 
 $Breadcrumb->removeCrumb($Breadcrumb->getCrumbCount() - 1);
-$Breadcrumb->addCrumb("JustJ", ".?page=index", "_self");
-$Breadcrumb->addCrumb("Download", "index.php?page=download", "_self");
+if ($all != "true") {
+  $Breadcrumb->addCrumb("JustJ", ".?page=index", "_self");
+  $Breadcrumb->addCrumb("Download", "index.php?page=download", "_self");
+}
 
 $pageTitle = "JustJ Downloads";
 

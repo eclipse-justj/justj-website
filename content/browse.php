@@ -19,18 +19,28 @@ code a:link, code a:visited {
     box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
 }
 
+:target {
+    -webkit-box-shadow:inset 0px 0px 0px 20px rgba(255, 0, 0, 0.1);
+    -moz-box-shadow:inset 0px 0px 0px 20px rgba(255, 0, 0, 0.1);
+    box-shadow:inset 0px 0px 0px 20px rgba(255, 0, 0, 0.1);
+}
+
 </style>
 
 EOSTYLE;
 
 $App->AddExtraHtmlHeader($style);
 
+$all = $_GET["all"];
+$allQueryPrefix = $all == "true" ? 'all=true&' : '';
+$allFullQueryPrefix = $all == "true" ? '?all=true&' : '';
+
 $scriptName = $_SERVER['SCRIPT_NAME'];
 $scriptPath = dirname($scriptName);
-$projectName = substr($scriptName, 0, strpos($scriptName, '/', 1));
+$projectName = $all == "true" ? "/" : substr($scriptName, 0, strpos($scriptName, '/', 1));
 $serverName = $_SERVER['SERVER_NAME'];
 
-$baseURL = '//' . $serverName . $scriptPath . '/download.eclipse.org.php?file=';
+$baseURL = '//' . $serverName . $scriptPath . "/download.eclipse.org.php?$allQueryPrefix" . "file=";
 
 $file = $_GET["file"];
 
@@ -43,7 +53,7 @@ echo '<h3 style="margin-top: 0;"><a href="' . $url . '">' . $url . '</a></h3>';
 $targetFolder = '/localsite/download.eclipse.org/' . $path;
 $targetFolder = preg_replace('/\\/+/', '/', $targetFolder);
 
-function convert_filesize($bytes, $decimals = 2){
+function convertFileSize($bytes, $decimals = 2){
     $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
     $factor = floor((strlen($bytes) - 1) / 3);
     return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
@@ -100,7 +110,7 @@ function listFolderFiles($actualURL, $baseURL, $basePath, $dir) {
 $header = <<<EOHEADER
       <tr>
         <th>File</th>
-        <th style='text-align: right; max-width 5em; width: 5em;'>Size</th>
+        <th style='text-align: right; max-width 7em; width: 7em;'>Size<span style='margin-right: 2em;'/></th>
         <th style='text-align: right; max-width: 8em; width: 8em;'>Permissions</th>
         <th style='xwidth: 20%; max-width: 13em; width: 13em; text-align: right;'>Date<span style='margin-right: 4em;'/></th>
       </tr>
@@ -117,13 +127,13 @@ EOHEADER;
     foreach ($files as $f) {
       $path = $dir . '/' . $f;
       if (is_dir($path)) {
-        echo "<tr class='file_row'>";
+        echo "<tr class='file_row' id='$f'>";
         if ($f == '..') {
           if (strpos($basePath, '/', 1) !== false) {
             $parent = dirname($basePath);
-            $url = $baseURL . $parent;
+            $url = $baseURL . $parent . '#' . basename($basePath);
           } else {
-            $url = $baseURL;
+            $url = "$baseURL#$basePath";
           }
         } else if ($basePath == "") {
           $url = $baseURL . $f;
@@ -144,12 +154,14 @@ EOHEADER;
     foreach ($files as $f) {
       $path = $dir . '/' . $f;
       if (!is_dir($path)) {
-        echo "<tr class='file_row'>";
+        echo "<tr class='file_row' id='$f'>";
         $url = $baseURL . $basePath . '/'. $f;
         echo '<td><a href="' . $actualURL . $f .'"><img src="icons/file.svg"/>&nbsp;' . $f . "</a></td>\n";
         $size = filesize($dir.'/'.$f);
-        $value = convert_filesize($size);
-        echo '<td style="text-align: right; font-family: monospace;">' . $value . "</td>\n";
+        $value = convertFileSize($size);
+        $downloadLink = "https://www.eclipse.org/downloads/download.php?file=" . ($basePath == "" ? "" : "/$basePath") . "/$f";
+        $download = '<a href="' . $downloadLink . '"><span class="col-sm-6 downloadLink-icon" style="float: right;"><i class="fa fa-download"></i></span></a>';
+        echo '<td style="text-align: right; font-family: monospace;">' . $value . "$download</td>\n";
         $perms = perms($path);
         echo "<td style='text-align: right; font-family: monospace;'>$perms</td>\n";
         $modTime = date('Y-m-d H:i:s', filemtime($path));
@@ -166,9 +178,22 @@ echo "<br/>";
 
 $segments = explode("/", $path, -1);
 array_shift($segments);
-array_shift($segments);
+if ($all != "true") {
+  array_shift($segments);
+}
 
-$Breadcrumb->addCrumb(substr($projectName, 1), "download.eclipse.org.php", "_self");
+function anchor(&$l) {
+  foreach ($l as $s) {
+   array_shift($l);
+   return "#$s";
+  }
+  return "";
+}
+
+$anchorSegments = $segments;
+$mainLink = "download.eclipse.org.php$allFullQueryPrefix" . anchor($anchorSegments);
+$main = $all == "true" ? "download.eclipse.org" : substr($projectName, 1);
+$Breadcrumb->addCrumb($main, $mainLink, "_self");
 
 $link = "";
 foreach ($segments as $segment) {
@@ -176,8 +201,7 @@ foreach ($segments as $segment) {
     $link .= "/";
   }
   $link .= $segment;
-
-  $Breadcrumb->addCrumb($segment, "?file=" . $link, "_self");
+  $Breadcrumb->addCrumb($segment, "?$allQueryPrefix" . "file=$link" . anchor($anchorSegments), "_self");
 }
 
 ?>

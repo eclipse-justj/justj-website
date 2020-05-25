@@ -129,7 +129,7 @@ function perms($file) {
 }
 
 function listFolderFiles($actualURL, $baseURL, $basePath, $dir) {
-    global $prefix;
+    global $prefix, $projectName;
     echo "<table style='width: 100%; table-layout: fixed;'>";
 $header = <<<EOHEADER
       <tr>
@@ -183,7 +183,7 @@ EOHEADER;
         echo '<td><a href="' . $actualURL . $f .'"><img src="' . $prefix .'icons/file.svg"/>&nbsp;' . $f . "</a></td>\n";
         $size = filesize($dir.'/'.$f);
         $value = convertFileSize($size);
-        $downloadLink = "https://www.eclipse.org/downloads/download.php?file=" . ($basePath == "" ? "" : "/$basePath") . "/$f";
+        $downloadLink = "https://www.eclipse.org/downloads/download.php?file=" . ($projectName == "/" ? "" : $projectName) . ($basePath == "" ? "" : "/$basePath") . "/$f";
         $download = '<a href="' . $downloadLink . '"><span class="col-sm-6 downloadLink-icon" style="float: right;"><i class="fa fa-download"></i></span></a>';
         echo "<td class='ff'>" . $value . "$download</td>\n";
         $perms = perms($path);

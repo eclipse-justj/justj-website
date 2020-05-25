@@ -1,7 +1,7 @@
 <?php
 // This file is copied to https://download.eclipse.org/justj/index.php.
 $test = '.test';
-// $test = '';
+$test = '';
 $query = $_SERVER['QUERY_STRING'];
 if ($query != "") {
   $all = "true";

@@ -80,7 +80,7 @@ $html = ob_get_clean();
 
 // Insert extra html before closing </head> tag.
 // Use our own favicon
-$App->AddExtraHtmlHeader('<link rel="shortcut icon" href="justj_favicon.ico"/>');
+$App->AddExtraHtmlHeader('<link rel="shortcut icon" href="' . $prefix . 'justj_favicon.ico"/>');
 
 $style = <<<EOSTYLE
 

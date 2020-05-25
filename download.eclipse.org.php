@@ -14,7 +14,10 @@
  */
 
 error_reporting(0);
-$all = $_GET["all"];
+if ($all == "") {
+ $all = $_GET["all"];
+}
+
 $host = $_SERVER['DOCUMENT_ROOT'];
 require_once($host . "/eclipse.org-common/system/app.class.php");
 require_once($host . "/eclipse.org-common/system/nav.class.php");
@@ -67,17 +70,13 @@ $variables['btn_cfa'] = array(
 // Set Solstice theme variables. (Array)
 $App->setThemeVariables($variables);
 
-$query = $_SERVER['"QUERY_STRING"'];
-ob_start();
-include ("content/browse.php" . (empty($query) ? "" : "?$query"));
-$html = ob_get_clean();
-
-if (false) {
-  ob_start();
-  var_dump($_SERVER);
-  echo "<br>hello<br>";
-  $html = ob_get_clean() . $html;
+if ($query == '') {
+  $query = $_SERVER['"QUERY_STRING"'];
 }
+
+ob_start();
+include ($prefix . "content/browse.php");
+$html = ob_get_clean();
 
 // Insert extra html before closing </head> tag.
 // Use our own favicon

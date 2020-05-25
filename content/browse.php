@@ -13,10 +13,15 @@ code a:link, code a:visited {
   color: inherit;
 }
 
-.file_row:hover {
+.fr:hover {
     -webkit-box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
     -moz-box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
     box-shadow:inset 0px 0px 0px 20px rgba(255, 165, 0, 0.2);
+}
+
+.ff {
+  text-align: right; 
+  font-family: monospace;
 }
 
 :target {
@@ -31,18 +36,31 @@ EOSTYLE;
 
 $App->AddExtraHtmlHeader($style);
 
-$all = $_GET["all"];
-$allQueryPrefix = $all == "true" ? 'all=true&' : '';
-$allFullQueryPrefix = $all == "true" ? '?all=true&' : '';
+if ($all == '') {
+  $all = $_GET['all'];
+}
 
-$scriptName = $_SERVER['SCRIPT_NAME'];
+if ($scriptName == '') {
+  $scriptName = $_SERVER['SCRIPT_NAME'];
+}
+
 $scriptPath = dirname($scriptName);
 $projectName = $all == "true" ? "/" : substr($scriptName, 0, strpos($scriptName, '/', 1));
-$serverName = $_SERVER['SERVER_NAME'];
 
-$baseURL = '//' . $serverName . $scriptPath . "/download.eclipse.org.php?$allQueryPrefix" . "file=";
+if ($baseURL == '') {
+  $allFullQueryPrefix = $all == "true" ? '?all=true&' : '';
+  $mainURL = "download.eclipse.org.php$allFullQueryPrefix";
+  $allQueryPrefix = $all == "true" ? 'all=true&' : '';
+  $serverName = $_SERVER['SERVER_NAME'];
+  $baseURL = '//' . $serverName . $scriptPath . "/download.eclipse.org.php?$allQueryPrefix" . "file=";
+} else {
+  $mainURL = $baseURL;
+}
 
 $file = $_GET["file"];
+$file = preg_replace('%^/+%', '', $file);
+$file = preg_replace('%/+$%', '', $file);
+$file = preg_replace('%/+%', '/', $file);
 
 $path = $projectName . '/' . $file . '/';
 $path = preg_replace('%/+%', '/', $path);
@@ -60,10 +78,7 @@ function convertFileSize($bytes, $decimals = 2){
       $bytes = $bytes / pow(1024, 0);
       $factor = 1;
     }
-    $result = sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$size[$factor];
-    //if ($factor == 0) {
-      //$result = preg_replace('%[.]00%', '&nbsp;&nbsp;&nbsp;', $result);
-    // }
+    $result = sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . '<i style="margin-left: .2em;"></i>' . @$size[$factor];
     return $result;
 }
 
@@ -114,13 +129,14 @@ function perms($file) {
 }
 
 function listFolderFiles($actualURL, $baseURL, $basePath, $dir) {
+    global $prefix;
     echo "<table style='width: 100%; table-layout: fixed;'>";
 $header = <<<EOHEADER
       <tr>
         <th>File</th>
-        <th style='text-align: right; max-width 7em; width: 7em;'>Size<span style='margin-right: 2em;'/></th>
-        <th style='text-align: right; max-width: 8em; width: 8em;'>Permissions</th>
-        <th style='xwidth: 20%; max-width: 13em; width: 13em; text-align: right;'>Date<span style='margin-right: 4em;'/></th>
+        <th style='max-width 8em; width: 8em; text-align: right;'>Size<i style='margin-right: 2em;'></i></th>
+        <th style='max-width: 8em; width: 8em; text-align: right;'>Permissions</th>
+        <th style='max-width: 13em; width: 13em; text-align: right;'>Date<i style='margin-right: 4em;'></i></th>
       </tr>
 EOHEADER;
     echo "$header";
@@ -135,7 +151,7 @@ EOHEADER;
     foreach ($files as $f) {
       $path = $dir . '/' . $f;
       if (is_dir($path)) {
-        echo "<tr class='file_row' id='$f'>";
+        echo "<tr class='fr' id='$f'>";
         if ($f == '..') {
           if (strpos($basePath, '/', 1) !== false) {
             $parent = dirname($basePath);
@@ -149,12 +165,12 @@ EOHEADER;
           $url = $baseURL . $basePath . '/'. $f;
         }
 
-        echo '<td><a href="' . $url . '"><img src="icons/folder.svg"/>&nbsp;' . $f . "</a></td>\n";
+        echo '<td><a href="' . $url . '"><img src="' . $prefix . 'icons/folder.svg"/>&nbsp;' . $f . "</a></td>\n";
         echo "<td></td>\n";
         $perms = perms($path);
-        echo "<td style='text-align: right; font-family: monospace;'>$perms</td>\n";
+        echo "<td class='ff'>$perms</td>\n";
         $modTime = date('Y-m-d H:i:s', filemtime($path));
-        echo '<td style="text-align: right; font-family: monospace;">' . $modTime . "</td>\n";
+        echo "<td class='ff'>" . $modTime . "</td>\n";
         echo "</tr>";
       }
     }
@@ -162,18 +178,18 @@ EOHEADER;
     foreach ($files as $f) {
       $path = $dir . '/' . $f;
       if (!is_dir($path)) {
-        echo "<tr class='file_row' id='$f'>";
+        echo "<tr class='fr' id='$f'>";
         $url = $baseURL . $basePath . '/'. $f;
-        echo '<td><a href="' . $actualURL . $f .'"><img src="icons/file.svg"/>&nbsp;' . $f . "</a></td>\n";
+        echo '<td><a href="' . $actualURL . $f .'"><img src="' . $prefix .'icons/file.svg"/>&nbsp;' . $f . "</a></td>\n";
         $size = filesize($dir.'/'.$f);
         $value = convertFileSize($size);
         $downloadLink = "https://www.eclipse.org/downloads/download.php?file=" . ($basePath == "" ? "" : "/$basePath") . "/$f";
         $download = '<a href="' . $downloadLink . '"><span class="col-sm-6 downloadLink-icon" style="float: right;"><i class="fa fa-download"></i></span></a>';
-        echo '<td style="text-align: right; font-family: monospace;">' . $value . "$download</td>\n";
+        echo "<td class='ff'>" . $value . "$download</td>\n";
         $perms = perms($path);
-        echo "<td style='text-align: right; font-family: monospace;'>$perms</td>\n";
+        echo "<td class='ff'>$perms</td>\n";
         $modTime = date('Y-m-d H:i:s', filemtime($path));
-        echo '<td style="text-align: right; font-family: monospace;">' . $modTime . "</td>\n";
+        echo "<td class='ff'>" . $modTime . "</td>\n";
         echo "</tr>";
       }
     }
@@ -199,7 +215,7 @@ function anchor(&$l) {
 }
 
 $anchorSegments = $segments;
-$mainLink = "download.eclipse.org.php$allFullQueryPrefix" . anchor($anchorSegments);
+$mainLink = $mainURL . anchor($anchorSegments);
 $main = $all == "true" ? "download.eclipse.org" : substr($projectName, 1);
 $Breadcrumb->addCrumb($main, $mainLink, "_self");
 

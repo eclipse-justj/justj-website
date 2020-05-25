@@ -23,6 +23,10 @@
   <h3>Repositories Analyzed for <code>jdeps</code></h3>
 
   Visit the <code><a href="https://download.eclipse.org/justj/jdeps/">https://download.eclipse.org/justj/jdeps/</a></code> index.
+  
+  <h3>Sample Products that Use JustJ JREs</h3>
+
+  Visit the <code><a href="https://download.eclipse.org/justj/www/download.eclipse.org.php?file=sample-products">https://download.eclipse.org/justj/sample-products/*</a></code> index.
 
   <hr/>
 

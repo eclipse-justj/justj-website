@@ -282,5 +282,20 @@ The absence of the <code>jdk.localedata</code> module might also be a concern.
 Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
 </p>
 
+<h2 id="products">Building Products that Use JustJ JREs</h2>
+
+<p>
+In order to test the validity and intregity of the JustJ JRE p2 repositories,
+a <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/products/org.eclipse.justj.tools.sample.product/Sample.product">Sample.project</a></code> is defined to use them.
+The <code><a href="https://ci.eclipse.org/justj/job/build-sample-product/">build-sample-product</a></code> pipeline builds them and publishes them to
+<code><a href="https://download.eclipse.org/justj/www/download.eclipse.org.php?file=sample-products">https://download.eclipse.org/justj/sample-products/*</a></code>.
+Currently the Windows and Linux versions work.
+For Mac there seems to be a packaging problem with the build, i.e., the application won't launch from the icon, but it does run from the command line:
+<pre>
+$ Eclipse-Sample.app/Contents/MacOS/eclipse
+</pre>
+This suggests that the JREs themselves are working well.
+We hope to figure out the packaging problem for Mac so that all these samples are fully functional.
+</p>
 
 </div>

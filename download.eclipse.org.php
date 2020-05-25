@@ -35,7 +35,9 @@ if ($all != "true") {
   $Breadcrumb->addCrumb("Download", "index.php?page=download", "_self");
 }
 
-$pageTitle = "JustJ Downloads";
+if ($pageTitle == "") {
+  $pageTitle = "JustJ Downloads";
+}
 
 $pageAuthor = 'Ed Merks';
 $pageKeywords = 'justj,jdk,jre';

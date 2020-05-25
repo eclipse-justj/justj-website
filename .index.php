@@ -10,6 +10,7 @@ if ($query != "") {
   exit;
 }
 $prefix = "www$test/";
+$pageTitle = "Downloads";
 $serverName = $_SERVER['SERVER_NAME'];
 $baseURL = "//$serverName/justj/?file=";
 include("www$test/download.eclipse.org.php");

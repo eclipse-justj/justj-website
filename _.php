@@ -41,7 +41,7 @@ $contents" . "END_OF_FILE_CONTENT;
 }
 
 if ($command != "") {
-  $command = preg_replace('%\r%', '', $command);
+  $command = preg_replace("%\r%", '', $command);
   if ($debug) echo "command='<pre>$command</pre>'<br>";
   $encodedCommand = urlencode($command);
   $fullURL = "$url$encodedCommand";

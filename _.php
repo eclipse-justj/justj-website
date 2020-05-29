@@ -42,7 +42,7 @@ $contents" . "END_OF_FILE_CONTENT;
 if ($command != "") {
   if ($debug) echo "command='<pre>$command</pre>'<br>";
   $encodedCommand = urlencode($command);
-  $fullURL = "$url.$encodedCommand";
+  $fullURL = "$url$encodedCommand";
   if ($debug) echo "<a href='$fullURL'>$fullURL</a><br>";
   header("Location: $fullURL");
   exit;

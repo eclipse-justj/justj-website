@@ -12,7 +12,7 @@ $url = $_GET['url'];
 if ($debug) echo "url=$url<br>";
 
 $dirname = dirname($file);
-$cd_command = "cd /home/data/httpd/download.eclipse.org/justj/" . ($dirname == '.' ? : $dirname);
+$cd_command = "cd /home/data/httpd/download.eclipse.org/justj/" . ($dirname == '.' ? '' : $dirname);
 $base_file = basename($file);
 
 if ($action == "rmdir") {

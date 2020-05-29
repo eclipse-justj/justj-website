@@ -29,18 +29,23 @@ $Nav  = new Nav();
 $Theme = $App->getThemeClass();
 $Breadcrumb = new Breadcrumb();
 
-$Breadcrumb->removeCrumb($Breadcrumb->getCrumbCount() - 1);
+// Reduce to just the Home / Projects crumbs.
+while ($Breadcrumb->getCrumbCount() > 2) {
+  $Breadcrumb->removeCrumb($Breadcrumb->getCrumbCount() - 1);
+}
+
 if ($all != "true") {
   $Breadcrumb->addCrumb("JustJ", ".?page=index", "_self");
   $Breadcrumb->addCrumb("Download", "index.php?page=download", "_self");
 }
-
 if ($pageTitle == "") {
   $pageTitle = "JustJ Downloads";
 }
 
 $pageAuthor = 'Ed Merks';
-$pageKeywords = 'justj,jdk,jre';
+if ($pageKeywords == '') {
+  $pageKeywords = 'justj,jdk,jre';
+}
 
 $eclipse_justj = '<span style="font-family: Arial, Helvetica, sans-serif;"><span style="color: #2c2255;">eclipse</span> <span class="orange">justj</span></span>';
 $simple_justj = '<span style="white-space:nowrap"><span style="color: #2c2255;">Just</span><span class="orange">J</span></span>';
@@ -71,10 +76,6 @@ $variables['btn_cfa'] = array(
 
 // Set Solstice theme variables. (Array)
 $App->setThemeVariables($variables);
-
-if ($query == '') {
-  $query = $_SERVER['"QUERY_STRING"'];
-}
 
 ob_start();
 include ($prefix . "content/browse.php");

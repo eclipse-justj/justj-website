@@ -13,6 +13,90 @@
 <div id="midcolumn">
 <h1><img style="height: 2ex;" src="justj_title.svg" alt="Eclipse JustJ"/> Documentation</h1>
 
+<h2 id="products">Building Products that Use JustJ JREs</h2>
+
+<p>
+In order to test the validity and intregity of the JustJ JRE p2 repositories,
+a <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/products/org.eclipse.justj.tools.sample.product/Sample.product">Sample.product</a></code> is defined to use them.
+The <code><a href="https://ci.eclipse.org/justj/job/build-sample-product/">build-sample-product</a></code> pipeline builds them and publishes them to
+<code><a href="https://download.eclipse.org/justj/www/download.eclipse.org.php?file=sample-products">https://download.eclipse.org/justj/sample-products/</a>*</code>.
+All three versions have been verified to work on each of their respective operating systems.
+<p>
+To build a feature-based product with an embedded JRE, just include the following in the <code>&lt;features></code> section of the <code>*.product</code>:
+</p>
+</p>
+<blockquote>
+<code>
+&ltfeature id="org.eclipse.justj.openjdk.hotspot.jre.full" installMode="root"/>
+</code>
+</blockquote>
+<p>
+To build a plugin-based product with an embedded JRE, just include the following in the <code>&lt;plugins></code> section of the <code>*.product</code>:
+</p>
+</p>
+<blockquote>
+<code>
+&ltplugin id="org.eclipse.justj.openjdk.hotspot.jre.full"/>
+</code>
+</blockquote>
+<p>
+Note in particular that the plugin requires its OS-specific fragments, filtered of course so that only the appropriate one is actually installed.
+</p>
+<p>
+</p>
+
+<p>
+Of course will need to specify the update site that contains this JRE and of course you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
+</p>
+<blockquote>
+<a href="https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest</a>
+</blockquote>
+<p>
+Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
+</p>
+
+<h2 id="jdeps">Building Smaller JREs with <code>jdeps</code></h2>
+
+<p>
+Java's modularized architecture supports analyzing a jar's module dependencies using <code><a href="https://docs.oracle.com/en/java/javase/14/docs/specs/man/jdeps.html">jdeps</a></code>.
+With such an analysis it is possible to determine the reduced dependencies of a particular IDE or RCP distribution.
+JustJ has automated this dependency analysis via the <code><a href="https://ci.eclipse.org/justj/job/build-jdeps/">build-jres</a></code> job 
+which generates <a href="https://download.eclipse.org/justj/jdeps/">a detailed report</a>.
+</p>
+<p>
+Reducing the JRE size is particularly important for smaller applications such as the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> 
+which is currently roughly 53MB in size.
+Shipping that with a 70MB JRE would be a significant bloat.
+Furthermore, most users treat it as disposable, repeatedly downloading a new one with each release.
+It is downloaded roughy 3 million times per release cycle.
+</p>
+<p>
+The <a href="https://www.eclipse.org/downloads/packages/">EPP Packages</a> range from 155MB to 400MB in size.
+For this use case, size is much less of a concern.
+In addition, the majority of the users install using the installer rather than downloading EPP Packages.
+This has the advantage that the large JRE fragment will be in the shared bundle pool by default and can be reused across multiple installations; 
+it needs to be updated only whenever there is a new Java release.
+</p>
+<p>
+The result of this analysis is used to produce the JREs with <code>.minimal</code> qualifier on the download site:
+</p>
+<blockquote>
+<a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/</a>
+</blockquote>
+<p>
+The <code>.stripped</code> versions of these are less than 1/2 the size of the corresponding <code>.full.stripped</code> version.
+</p>
+<p>
+Some outstanding concerns that remain are of course the impact of what's excluded.
+For example, if certain agents, e.g., <code>jdk.hotspot.agent</code>, or <code>jdk.jdwp.agent</code> are excluded, it will not be possible to use such a JRE for debugging.
+Of course stripping also makes the JRE poor for debugging purposes and could lead to less informative stack traces.
+The absence of the <code>jdk.localedata</code> module might also be a concern if language translation support is needed.
+</p>
+
+<p>
+Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
+</p>
+
 <h2 id="jre-gen-anatomy">Anatomy of <code><a href="https://ci.eclipse.org/justj/job/build-jres/lastSuccessfulBuild/artifact/jre-gen/">jre-gen</a></code></h2>
 <p>
 As described in the <a href="?page=index#jre-p2">Automated JRE p2 Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/>.tools</a> section of the main page,
@@ -240,62 +324,5 @@ Each label is a link to an actual artifact from the most recent succesfull build
 </ul>
 
 <!-- #############################  THE SECTION ABOVE IS GENERATED BY org.eclipse.justj.codegen.model.util.Generator -Dorg.eclipse.justj.describe=true ################################### -->
-
-<h2 id="jdeps">Building Smaller JREs with <code>jdeps</code></h2>
-
-<p>
-Java's modularized architecture supports analyzing a jar's module dependencies using <code><a href="https://docs.oracle.com/en/java/javase/14/docs/specs/man/jdeps.html">jdeps</a></code>.
-With such an analysis it is possible to determine the reduced dependencies of a particular IDE or RCP distribution.
-JustJ has automated this dependency analysis via the <code><a href="https://ci.eclipse.org/justj/job/build-jdeps/">build-jres</a></code> job 
-which generates <a href="https://download.eclipse.org/justj/jdeps/">a detailed report</a>.
-</p>
-<p>
-Reducing the JRE size is particularly important for smaller applications such as the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> 
-which is currently roughly 53MB in size.
-Shipping that with a 70MB JRE would be a significant bloat.
-Furthermore, most users treat it as disposable, repeatedly downloading a new one with each release.
-It is downloaded roughy 3 million times per release cycle.
-</p>
-<p>
-The <a href="https://www.eclipse.org/downloads/packages/">EPP Packages</a> range from 155MB to 400MB in size.
-For this use case, size is much less of a concern.
-In addition, the majority of the users install using the installer rather than downloading EPP Packages.
-This has the advantage that the JRE large fragment will be in the shared bundle pool by default and can be reused shared among multiple installions and needs to be updated only whether there is a new Java release.
-</p>
-<p>
-The result of this analysis is used to produce the JREs with <code>.minimal</code> qualifier on the download site:
-</p>
-<blockquote>
-<a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/</a>
-</blockquote>
-<p>
-The <code>.stripped</code> versions of these are less than 1/2 the size of the corresponding <code>.full.stripped</code> version.
-</p>
-<p>
-Some outstanding concerns that remain are of course the impact of what's excluded.
-For example, if certain agents, e.g., <code>jdk.hotspot.agent</code>, or <code>jdk.jdwp.agent</code> are excluded, it will not be possible to use such a JRE for debugging.
-Of course stripping also makes the JRE poor for debugging purposes and could lead to less informative stack traces.
-The absence of the <code>jdk.localedata</code> module might also be a concern.
-</p>
-
-<p>
-Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
-</p>
-
-<h2 id="products">Building Products that Use JustJ JREs</h2>
-
-<p>
-In order to test the validity and intregity of the JustJ JRE p2 repositories,
-a <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/products/org.eclipse.justj.tools.sample.product/Sample.product">Sample.project</a></code> is defined to use them.
-The <code><a href="https://ci.eclipse.org/justj/job/build-sample-product/">build-sample-product</a></code> pipeline builds them and publishes them to
-<code><a href="https://download.eclipse.org/justj/www/download.eclipse.org.php?file=sample-products">https://download.eclipse.org/justj/sample-products/*</a></code>.
-Currently the Windows and Linux versions work.
-For Mac there seems to be a packaging problem with the build, i.e., the application won't launch from the icon, but it does run from the command line:
-<pre>
-$ Eclipse-Sample.app/Contents/MacOS/eclipse
-</pre>
-This suggests that the JREs themselves are working well.
-We hope to figure out the packaging problem for Mac so that all these samples are fully functional.
-</p>
 
 </div>

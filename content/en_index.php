@@ -19,11 +19,15 @@
 <h1><?php print $eclipse_justj;?></h1>
 
 <p>
-<b><?php print $simple_justj;?></b> provides fully-functional Java runtimes that can be redistributed by Eclipse Projects.
+<b><?php print $simple_justj;?></b> provides fully-functional Java&trade; runtimes that can be redistributed by Eclipse Projects.
 The form in which these are made available is intended to make these easily consumable. 
-As such, the Java runtimes are available via p2 repositories as well as via direct packaged downloads. 
+As such, Java runtimes are available via <a href="?page=download#p2-update-sites">p2 repositories</a> as well as via direct <a href="?page=download#jre-downloads">packaged downloads</a>. 
 The sources of these Java runtimes are any and all versions approved by the Eclipse Foundation for such purposes. 
 Currently that is limited to the latest release available via <a href="https://jdk.java.net" target="jdk.java.net">https://jdk.java.net</a>.
+</p>
+
+<p>
+JustJ provides <a href="?page=documentation#products">sample products</a> that illustrate how to use the p2 update sites to build a product that includes an embedded Java runtime.
 </p>
 
 <h1>Building JREs with <code>jlink</code></h1>

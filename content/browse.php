@@ -21,6 +21,7 @@ code a:link, code a:visited {
 
 .ff {
   text-align: right; 
+  letter-spacing: -0.5px;
   font-family: monospace;
 }
 

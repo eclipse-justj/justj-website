@@ -46,7 +46,8 @@ Note in particular that the plugin requires its OS-specific fragments, filtered 
 </p>
 
 <p>
-Of course will need to specify the update site that contains this JRE and of course you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
+Of course you will need to specify the update site that contains this JRE 
+and of course you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
 </p>
 <blockquote>
 <a href="https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest</a>

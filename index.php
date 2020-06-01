@@ -158,6 +158,16 @@ ob_start();
 include ("content/" . $contentScript);
 $html = ob_get_clean();
 
+// Add the popup content to each html.
+$popup = <<<POPUP
+                <div id="popup" class="modal-popup">
+                  <span class="modal-popup-close">&times;</span>
+                  <img class="modal-popup-content" id="modal-popup-image">
+                  <div id="modal-popup-caption"></div>
+                </div>
+POPUP;
+$html .= $popup;
+
 // Insert extra html before closing </head> tag.
 // Use our own favicon
 $App->AddExtraHtmlHeader('<link rel="shortcut icon" href="justj_favicon.ico"/>');
@@ -200,11 +210,127 @@ blockquote {
   margin: 0 0 10px;
 }
 
+.thumb {
+  width : 30em;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 1em;
+}
+
+.thumb:hover {
+  opacity: 0.7;
+}
+
+img.border {
+  border-style: groove;
+  border-color: DarkGray;
+  border-width: 3px;
+  margin-left: 1.5em;
+}
+
+.modal-popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-popup-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px;
+}
+
+#modal-popup-caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 900px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 150%;
+  color: white;
+  padding: 10px 0;
+  height: 150px;
+}
+
+.modal-popup-content, #modal-popup-caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+.modal-popup-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.modal-popup-close:hover, .modal-popup-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+  modal-content {
+    width: 100%;
+  }
+}
+
+span.detail {
+  color: DarkSlateGray;
+  font-variant: small-caps;
+}
+
 </style>
 
 EOSTYLE;
 
 $App->AddExtraHtmlHeader($style);
+
+$script = <<<EOSCRIPT
+
+<script>
+    function popup(id) {
+      var popup = document.getElementById('popup');
+      popup.style.display = 'block';
+
+      // Get the source image and insert its "src" as the  popup image's "src".
+      var sourceImage = document.getElementById(id);
+      var targetImage = document.getElementById('modal-popup-image');
+      targetImage.src = sourceImage.src;
+
+      // Use the source image's "alt" text as a caption.
+      var captionText = document.getElementById('modal-popup-caption');
+      captionText.innerHTML = sourceImage.alt;
+
+      // When the user clicks on close button, close the popup.
+      var closeButton = document.getElementsByClassName('modal-popup-close')[0];
+      closeButton.onclick = function() {
+        popup.style.display = 'none';
+      }
+    }
+</script>
+
+EOSCRIPT;
+$App->AddExtraHtmlHeader($script);
 
 // Insert script/html before closing </body> tag.
 // $App->AddExtraJSFooter('<script type="text/javascript"

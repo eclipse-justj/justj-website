@@ -35,7 +35,7 @@
 <code><a href="https://wiki.eclipse.org/JustJ">https://wiki.eclipse.org/JustJ</a></code>
 </p>
 
-<h2>Workspace Setup</h2>
+<h2 id="setup">Workspace Setup</h2>
 <p>
 JustJ has a fully automated Oomph setup.
 Helpful details TBD.

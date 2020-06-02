@@ -211,7 +211,8 @@ blockquote {
 }
 
 .thumb {
-  width : 30em;
+  max-width : 30em;
+  max-height : 80ex;
   cursor: pointer;
   transition: 0.3s;
   margin-left: 1em;
@@ -296,7 +297,21 @@ img.border {
 
 span.detail {
   color: DarkSlateGray;
+  background-color: Azure;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
   font-variant: small-caps;
+}
+
+.def dt {
+  font-weight: normal;
+  margin-left: -0.3em;
+}
+
+.def dd {
+  margin-left: 1em;
+  margin-top: 1ex;
+  margin-bottom: 1ex;
 }
 
 </style>

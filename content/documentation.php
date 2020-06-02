@@ -117,7 +117,7 @@ As such, we generaly expect that each <code>JVM</code> will end up with three <c
 And we generaly expect that we'll end up with more than one <code>JVM</code> instance only because we have packaged different subsets of modules of the same Java version.
 </p>
 
-<p>
+<p id="jre-gen-description">
 The structure below outlines and describes what is generated for a <code>Model</code> with a single <code>JVM</code> with a single <code>Variant</code>.
 Of course the pattern for additional <code>JVM</code>s and <code>Variant</code>s simple repeats the same pattern.
 Each label is a link to an actual artifact from the most recent succesfull build, so you can inspect the contents.

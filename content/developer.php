@@ -120,7 +120,7 @@ Launchers are organized as favorites on the <span class="detail">Debug/Run</span
 </p>
 
 <p>
-Also, launchers are organized as favorites on the <span class="detail">External Tools</span> toolbar menu buttons:
+Also, launchers are organized as favorites on the <span class="detail">External Tools</span> toolbar menu button:
 </p>
 <p>
 <img id="setup-external-tools-menu" class="thumb" onclick="popup('setup-external-tools-menu');" src="content/setup-images/ExternalToolsMenu.png" alt="Launchers for External Tools Favorites"/>
@@ -178,11 +178,11 @@ From the context menu or the menu bar <span class="detail">Reconcile</span> the 
 </p>
 
 <p>
-This will take quite some time to complete
+This will take quite some time to complete.
 It uses the <span class="detail">Source</span> property to locate a <code>justj.manifest</code>
 as described in the <a href="?page=documentation#jre-gen-anatomy">Anatomy of <code>jre-gen</code></a> section,
 downloading all the JREs and storing them in the <code>local-cache</code> folder.
-<span class="detail">Refresh</span> the <code>org.eclipse.justj.model</code> project to see that new folder:
+<span class="detail">Refresh</span> the <code>org.eclipse.justj.model</code> project to see the new <code>jre-gen</code> folder:
 <p>
 <p>
 <img id="setup-local-cache" class="thumb border" onclick="popup('setup-local-cache');" src="content/setup-images/LocalCache.png" alt="The JREs Downloaded to the Local Cache"/>
@@ -297,7 +297,7 @@ The following launchers are available on the <span class="detail">Debug</span> t
   
   <dt><span class="detail">Run JREGen Generator for Description</span></dt>
   <dd>
-    Launches <code>org.eclipse.justj.codegen.model.util.Generator</code> purely generate a description
+    Launches <code>org.eclipse.justj.codegen.model.util.Generator</code> purely to generate a description
     that can be copied into the the <a href="?page=documentation#jre-gen-description">Anatomy of <code>jre-gen</code></a> section.
   </dd> 
   

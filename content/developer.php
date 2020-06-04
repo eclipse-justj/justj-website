@@ -157,7 +157,7 @@ It will perform in the background as follows on the status line at the bottom ri
 </p>
 <p>
 You can click the animated button to bring it into the foreground.
-When it completes, and an restart is needed, as is the case now, 
+When it completes, and a restart is needed, as is the case now, 
 you will need to open the dialog and hit <span class="detail">Finish</span> to restart the IDE.
 </p>
 
@@ -203,7 +203,7 @@ From the context menu or the menu bar <span class="detail">Generate</span> the m
 </p>
 
 <p>
-<span class="detail">Refresh</span> the <code>org.eclipse.justj.model</code> project to see that new folder:
+<span class="detail">Refresh</span> the <code>org.eclipse.justj.model</code> project to see the new <code>jre-gen</code> folder:
 </p>
 <p>
 <img id="setup-jre-gen-folder" class="thumb border" onclick="popup('setup-jre-gen-folder');" src="content/setup-images/JREGenFolder.png" alt="The Generated JRE-Gen Folder"/>

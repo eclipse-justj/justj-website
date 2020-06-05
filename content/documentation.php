@@ -16,7 +16,7 @@
 <h2 id="products">Building Products that Use JustJ JREs</h2>
 
 <p>
-In order to test the validity and intregity of the JustJ JRE p2 repositories,
+In order to test the validity and integrity of the JustJ JRE p2 repositories,
 a <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/products/org.eclipse.justj.tools.sample.product/Sample.product">Sample.product</a></code> is defined to use them.
 The <code><a href="https://ci.eclipse.org/justj/job/build-sample-product/">build-sample-product</a></code> pipeline builds them and publishes them to
 <code><a href="https://download.eclipse.org/justj/www/download.eclipse.org.php?file=sample-products">https://download.eclipse.org/justj/sample-products/</a>*</code>.
@@ -69,7 +69,7 @@ Reducing the JRE size is particularly important for smaller applications such as
 which is currently roughly 53MB in size.
 Shipping that with a 70MB JRE would be a significant bloat.
 Furthermore, most users treat it as disposable, repeatedly downloading a new one with each release.
-It is downloaded roughy 3 million times per release cycle.
+It is downloaded roughly 3 million times per release cycle.
 </p>
 <p>
 The <a href="https://www.eclipse.org/downloads/packages/">EPP Packages</a> range from 155MB to 400MB in size.
@@ -113,8 +113,8 @@ As such, when the model is reconciled against a single JRE <code>*.tar.gz</code>
 As each additional <code>*.tar.gz</code> is reconciled, it will induce a new <code>JVM</code> instance only if it has a different name or is for a different Java version, e.g., <code>14.0.2</code>.
 </p>
 <p>
-As such, we generaly expect that each <code>JVM</code> will end up with three <code>Variant</code> children for the three supported <code>os/arch</code> pairs
-And we generaly expect that we'll end up with more than one <code>JVM</code> instance only because we have packaged different subsets of modules of the same Java version.
+As such, we generally expect that each <code>JVM</code> will end up with three <code>Variant</code> children for the three supported <code>os/arch</code> pairs
+And we generally expect that we'll end up with more than one <code>JVM</code> instance only because we have packaged different subsets of modules of the same Java version.
 </p>
 
 <p id="jre-gen-description">

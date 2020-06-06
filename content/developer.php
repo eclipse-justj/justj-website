@@ -307,6 +307,13 @@ The following launchers are available on the <span class="detail">Debug</span> t
     this is useful for debugging the specialized site index generation for JRE p2 repositories.
   </dd> 
   
+  <dt><span class="detail">JustJ JREs Update Site Generator With Local Rsync</span></dt>
+  <dd>
+    Launches the <code>org.eclipse.justj.p2.manager</code> application for the JRE repository;
+    this is useful for debugging the specialized site index generation for JRE p2 repositories, including super update sites,
+    and for testing rsynch integration locally.
+  </dd> 
+  
   <dt><span class="detail">Run justj.manifest Indexer</span></dt>
   <dd>
     Launches <code>org.eclipse.justj.codegen.model.util.Indexer</code> to produce an index like <code><a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/</a></code>;

@@ -88,15 +88,19 @@ $path = preg_replace('%[.][.]%', '', $path);
 $url = 'https://download.eclipse.org' . $path;
 echo '<h3 style="margin-top: 0;"><a href="' . $url . '">' . $url . '</a></h3>';
 
-if ($parambuild != "") {
-  echo action('new', $basePath, image('new_file') . ' New File');
-  echo '<span style="padding-left: 1em;"/>';
-  echo action('mkdir', $basePath, image('new_folder') . ' New Folder');
-}
-echo '<hr>';
-
 $targetFolder = '/localsite/download.eclipse.org/' . $path;
 $targetFolder = preg_replace('/\\/+/', '/', $targetFolder);
+
+if ($parambuild != "") {
+  echo action('new', $file, image('new_file') . ' New File');
+  echo '<span style="padding-left: 1em;"/>';
+  echo action('mkdir', $file, image('new_folder') . ' New Folder');
+  if (!hasIndex($targetFolder)) {
+    echo '<span style="padding-left: 1em;"/>';
+    echo action('new_index', $file, image('new_index') . ' New index.php');
+  }
+}
+echo '<hr>';
 
 listFolderFiles($url, $baseURL, $file, $targetFolder);
 echo "<br/>";
@@ -119,6 +123,16 @@ foreach ($segments as $segment) {
   }
   $link .= $segment;
   $Breadcrumb->addCrumb($segment, "?$allQueryPrefix" . "file=$link" . anchor($anchorSegments), "_self");
+}
+
+function hasIndex($dir) {
+  $files = scandir($dir);
+  foreach ($files as $f) {
+    if ($f == "index.html" || $f == "index.php") {
+      return true;
+    }
+  }
+  return false;
 }
 
 function listFolderFiles($actualURL, $baseURL, $basePath, $dir) {

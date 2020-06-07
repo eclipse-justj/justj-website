@@ -32,6 +32,6 @@
 
   <h2>Low-level File System View</h2>
   <p>
-  Browse the <code><a href="download.eclipse.org.php">https://download.eclipse.org/justj</a></code> site.
+  Browse the <code><a href="download.eclipse.org.php">https://download.eclipse.org/justj</a></code> site. <a href="download.eclipse.org.php?parambuild=true" style="padding-left: 1em;"><img src="icons/tools.svg"/></a></code>
   </p>
 </div>

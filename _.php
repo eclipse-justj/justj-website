@@ -11,32 +11,41 @@ if ($debug) echo "file=$file<br>";
 $url = $_GET['url'];
 if ($debug) echo "url=$url<br>";
 
+$cd_dir_command = "cd /home/data/httpd/download.eclipse.org/justj/" . ($file == '.' ? '' : $file);
+
 $dirname = dirname($file);
 $cd_command = "cd /home/data/httpd/download.eclipse.org/justj/" . ($dirname == '.' ? '' : $dirname);
 $base_file = basename($file);
+
 
 if ($action == "rmdir") {
   $command = "$cd_command
 rm -r $base_file
 ";
-} else if ($action == "mkdir") {
-  $command = "$cd_command
-mkdir new_folder
-";
 } else if ($action == "rm") {
   $command = "$cd_command
 rm $base_file
-";
-} else if ($action == "new") {
-  $command = "$cd_command
-cat > new_file <<\"END_OF_FILE_CONTENT\"
-END_OF_FILE_CONTENT;
 ";
 } else if ($action == "edit") {
   $contents = file_get_contents("/localsite/download.eclipse.org/justj/$file");
   $command = "$cd_command
 cat > $base_file <<\"END_OF_FILE_CONTENT\"
 $contents" . "END_OF_FILE_CONTENT;
+";
+} else if ($action == "mkdir") {
+  $command = "$cd_dir_command
+mkdir new_folder
+";
+} else if ($action == "new_index") {
+  $command = "$cd_dir_command
+cat > index.php <<\"END_OF_FILE_CONTENT\"
+<?php header(\"Location: /justj/www/download.eclipse.org.php?file=$file\");?>
+END_OF_FILE_CONTENT;
+";
+} else if ($action == "new") {
+  $command = "$cd_dir_command
+cat > new_file <<\"END_OF_FILE_CONTENT\"
+END_OF_FILE_CONTENT;
 ";
 }
 

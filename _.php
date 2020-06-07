@@ -30,7 +30,7 @@ rm $base_file
   $contents = file_get_contents("/localsite/download.eclipse.org/justj/$file");
   $command = "$cd_command
 cat > $base_file <<\"END_OF_FILE_CONTENT\"
-$contents" . "END_OF_FILE_CONTENT;
+$contents" . "END_OF_FILE_CONTENT
 ";
 } else if ($action == "mkdir") {
   $command = "$cd_dir_command
@@ -40,12 +40,12 @@ mkdir new_folder
   $command = "$cd_dir_command
 cat > index.php <<\"END_OF_FILE_CONTENT\"
 <?php header(\"Location: /justj/www/download.eclipse.org.php?file=$file\");?>
-END_OF_FILE_CONTENT;
+END_OF_FILE_CONTENT
 ";
 } else if ($action == "new") {
   $command = "$cd_dir_command
 cat > new_file <<\"END_OF_FILE_CONTENT\"
-END_OF_FILE_CONTENT;
+END_OF_FILE_CONTENT
 ";
 }
 

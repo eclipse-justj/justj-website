@@ -62,9 +62,9 @@ $scriptPath = dirname($scriptName);
 $projectName = $all == "true" ? "/" : substr($scriptName, 0, strpos($scriptName, '/', 1));
 
 if ($baseURL == '') {
-  $allFullQueryPrefix = $all == "true" ? '?all=true&' : '';
+  $allFullQueryPrefix = $all == "true" ? '?all=true' : '';
   if ($parambuild != '') {
-    $allFullQueryPrefix .= 'parambuild=true&';
+    $allFullQueryPrefix .= ($allFullQueryPrefix == '' ? '?' : '&') . 'parambuild=true';
   }
   $mainURL = "download.eclipse.org.php$allFullQueryPrefix";
   $allQueryPrefix = $all == "true" ? 'all=true&' : '';

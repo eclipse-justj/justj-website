@@ -134,10 +134,9 @@ $variables['header_nav'] = array(
   'logo' => array( // Required
     'src' => 'justj_incubation.svg', // Required
     // 'src' => 'justj.svg', // Required
-    'style' => 'foo-bar',
     'alt' => 'The Main Index Page', // Optional
-    'url' => '?page=index', // Optional
-    'target' => '_blank' // Optional
+    // 'target' => '_blank', // Optional
+    'url' => '?page=index' // Optional
   )
 );
 

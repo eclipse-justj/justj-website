@@ -7,12 +7,16 @@ unset($jres[array_search('..', $jres, true)]);
 echo "<h3 id='jre-downloads'>JRE Downloads</h3>";
 
 foreach ($jres as $jre) {
-  echo "<code><a href='https://download.eclipse.org/justj/sandbox/jres/$jre/downloads/latest/'>JRE $jre Packages</a></code><br/>";
+  if (is_dir("$jres_folder/$jre/downloads/latest")) {
+    echo "<code><a href='https://download.eclipse.org/justj/sandbox/jres/$jre/downloads/latest/'>JRE $jre Packages</a></code><br/>";
+  }
 }
 
 echo "<h3 id='p2-update-sites'>JRE p2 Update Sites</h3>";
 
 foreach ($jres as $jre) {
-  echo "<code><a href='https://download.eclipse.org/justj/sandbox/jres/$jre/updates/'>JRE $jre Updates</a></code><br/>";
+  if (is_dir("$jres_folder/$jre/updates")) {
+    echo "<code><a href='https://download.eclipse.org/justj/sandbox/jres/$jre/updates/'>JRE $jre Updates</a></code><br/>";
+  }
 }
 ?>

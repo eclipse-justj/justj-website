@@ -30,7 +30,7 @@ Currently that is limited to the latest release available via <a href="https://j
 JustJ provides <a href="?page=documentation#products">sample products</a> that illustrate how to use the p2 update sites to build a product that includes an embedded Java runtime.
 </p>
 
-<h1>Building JREs with <code>jlink</code></h1>
+<h1 id="jlink">Building JREs with <code>jlink</code></h1>
 
 <p>
 Java's modularized architecture supports generating a JRE from a JDK using <code><a href="https://docs.oracle.com/en/java/javase/14/docs/specs/man/jlink.html">jlink</a></code>.
@@ -79,7 +79,7 @@ To launch an OSGi/Equinox application, the minimal functional JRE must also incl
 jlink --add-modules=jdk.base,java.xml --output .
 </pre>
 
-<h2>Automated JRE Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/></h2>
+<h2 id="jre">Automated JRE Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/></h2>
 
 <p>
 The process for generating a JRE from a JDK has been fully automated via 

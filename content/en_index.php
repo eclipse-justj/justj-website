@@ -45,24 +45,24 @@ This list of modules can be boiled down to produce the <code>--add-modules</code
 </p>
 
 <p>
-A minimal JRE with just the <code>jdk.base</code> module can be produced using <code>jlink</code> as follows:
+A minimal JRE with just the <code>java.base</code> module can be produced using <code>jlink</code> as follows:
 </p>
 <pre>
-jlink --add-modules=jdk.base --output .
+jlink --add-modules=java.base --output .
 </pre>
 
 <p>
 The size of this JRE can be reduced using compression:
 <p>
 <pre>
-jlink --compress=2 --add-modules=jdk.base --output .
+jlink --compress=2 --add-modules=java.base --output .
 </pre>
 
 <p>
 The size of this JRE can be further reduced by stripping debug symbols:
 <p>
 <pre>
-jlink --compress=2 --strip-debug --add-modules=jdk.base --output .
+jlink --compress=2 --strip-debug --add-modules=java.base --output .
 </pre>
 
 <p>
@@ -73,10 +73,10 @@ This is the smallest JRE that can be used for running very simple Java applicati
 <h2>Building JREs for OSGi</h2>
 
 <p>
-To launch an OSGi/Equinox application, the minimal functional JRE must also include the <code>java.xml</code> module:
+To launch an OSGi/Equinox application, the minimal functional JRE must also include the <code>java.xml</code> module, and to avoid deep-reflection warnings should include the <code>jdk.unsupported</code> module:
 </p>
 <pre>
-jlink --add-modules=jdk.base,java.xml --output .
+jlink --add-modules=java.base,java.xml,jdk.unsupported --output .
 </pre>
 
 <h2 id="jre">Automated JRE Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/></h2>

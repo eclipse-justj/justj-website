@@ -46,13 +46,59 @@ Note in particular that the plugin requires its OS-specific fragments, filtered 
 </p>
 
 <p>
-Of course you will need to specify the update site that contains this JRE 
-and of course you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
+Of course you must specify the update site that contains this JRE 
+and naturally you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
 </p>
 <blockquote>
 <a href="https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest</a>
 </blockquote>
 <p>
+There is a <a href="https://www.eclipse.org/forums/index.php/t/1104206">forum thread</a> 
+and a <a href="https://www.eclipse.org/lists/justj-dev/msg00003.html">mailing list thread</a> recording the experience of others who have experimented with this.
+The Tycho/Maven build must use Tycho 1.7.0 or higher, otherwise the build will fail with a <code>NullPointerException</code>.
+The JustJ JREs have explicit negative requirements to exclude <code>a.jre</code> and <code>a.jre.javase</code> from consideration during resolution;
+this is to ensure that only the actual executation environments and Java packages provided by the real JRE are used for resolution.
+Tycho currently has problems dealing with this but <a href="https://www.eclipse.org/lists/tycho-user/msg08567.html">work is being done</a> to address that.
+</p>
+<p>
+In the meantime, one must either 
+<b style="color: DarkSlateBlue;">disable</b> the use of the executation enviroment constraints during resolution,
+or <b style="color: DarkOliveGreen;">disable</b> the negative requirements themselves:
+</p>
+<pre>
+  &lt;build&gt;
+    &lt;pluginManagement&gt;
+      &lt;plugins&gt;
+        &lt;plugin&gt;
+          &lt;groupId&gt;org.eclipse.tycho&lt;/groupId&gt;
+          &lt;artifactId&gt;target-platform-configuration&lt;/artifactId&gt;
+          &lt;version&gt;${tycho-version}&lt;/version&gt;
+          &lt;configuration&gt;
+            &lt;target&gt;
+              ...
+            &lt;/target&gt;
+            <b style="color: DarkSlateBlue;">&lt;resolveWithExecutionEnvironmentConstraints&gt;false&lt;/resolveWithExecutionEnvironmentConstraints&gt;</b>
+            &lt;environments&gt;
+              ..
+            &lt;/environments&gt;
+            &lt;dependency-resolution&gt;
+              <b style="color: DarkOliveGreen;">&lt;profileProperties&gt;
+                &lt;org.eclipse.justj.buildtime&gt;true&lt;/org.eclipse.justj.buildtime&gt;
+              &lt;/profileProperties&gt;</b>
+            &lt;/dependency-resolution&gt;
+          &lt;/configuration&gt;
+        &lt;/plugin&gt;
+      &lt;/plugins&gt;
+    &lt;/pluginManagement&gt;
+  &lt;/build&gt;
+</code>
+</pre>
+<p>
+The former <b>must</b> be used if you specify the target platform using a <code>&lt;target&gt;</code> as opposed to merely providing <code>&lt;repositories&gt;</code>.
+<p>
+
+<p>
+If you have problems and need help, don't be afraid to ask.
 Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
 </p>
 

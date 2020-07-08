@@ -53,7 +53,7 @@ and naturally you can choose the specific JRE most suitable for the needs and si
 <a href="https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest</a>
 </blockquote>
 <p>
-There is a <a href="https://www.eclipse.org/forums/index.php/t/1104206">forum thread</a> 
+There is a <a href="https://www.eclipse.org/forums/index.php/t/1104206/">forum thread</a> 
 and a <a href="https://www.eclipse.org/lists/justj-dev/msg00003.html">mailing list thread</a> recording the experience of others who have experimented with this.
 The Tycho/Maven build must use Tycho 1.7.0 or higher, otherwise the build will fail with a <code>NullPointerException</code>.
 The JustJ JREs have explicit negative requirements to exclude <code>a.jre</code> and <code>a.jre.javase</code> from consideration during resolution;

@@ -246,7 +246,7 @@ Note that there are also launchers for additional Maven/Tycho builds.
   
   <dt><span class="detail">Generate JustJ JRE Index</span></dt>
   <dd>
-    Builds a JRE index via <code>${project_loc:/org.eclipse.justj.releng}/index</code> like <code><a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/</a></code>
+    Builds a JRE index via <code>${project_loc:/org.eclipse.justj.releng}/index</code> like <code><a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">https://download.eclipse.org/justj/jres/14/downloads/latest/</a></code>
   </dd>
   
   <dt><span class="detail">Build JustJ JRE Site</span></dt>
@@ -316,7 +316,7 @@ The following launchers are available on the <span class="detail">Debug</span> t
   
   <dt><span class="detail">Run justj.manifest Indexer</span></dt>
   <dd>
-    Launches <code>org.eclipse.justj.codegen.model.util.Indexer</code> to produce an index like <code><a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/</a></code>;
+    Launches <code>org.eclipse.justj.codegen.model.util.Indexer</code> to produce an index like <code><a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">https://download.eclipse.org/justj/jres/14/downloads/latest/</a></code>;
     this is useful for debugging the index generation logic locally.
   </dd> 
   

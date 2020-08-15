@@ -92,7 +92,7 @@ The <code>build-jre.sh</code> script is used by a <code><a href="https://git.ecl
 which in turn is used by the <code><a href="https://ci.eclipse.org/justj/job/build-jres/">build-jres</a></code> job to produce the following downloads:
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/</a>
+<a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">https://download.eclipse.org/justj/jres/14/downloads/latest/</a>
 </blockquote>
 
 <p>
@@ -104,11 +104,6 @@ while an absolutely minimal, compressed, OSGi-capable JRE, i.e., those JREs with
 These sizes are significantly (15% to 20%) reduced by stripping debug information, i.e., those JREs with the <code>.stripped</code> qualifier.
 See the <a href="?page=documentation#jdeps">Building Smaller JREs with <code>jdeps</code></a> section for details about creating JREs with a subset of the available modules.
 <p>
-
-<p>
-Note that the JREs are currently maintained in the so-called <code>sandbox</code> folder on the download server until the Eclipse community has helped validate the integrity of the artifacts being produced.
-Anything under <code>sandbox</code> is <b>transient</b> and is subject to arbitrary change, including removal.
-</p>
 
 <h2 id="jre-p2">Automated JRE p2 Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/>.tools</h2>
 
@@ -151,19 +146,19 @@ An instance of that model, <code><a href="https://git.eclipse.org/c/justj/justj.
 is maintained in <code><a href="https://git.eclipse.org/c/justj/justj.git/tree/">justj.git</a></code>.
 The <code><a href="https://git.eclipse.org/c/justj/justj.git/tree/releng/org.eclipse.justj.releng/Jenkinsfile">Jenkins pipeline script</a></code>
 used by the <code><a href="https://ci.eclipse.org/justj/job/build-jres/">build-jres</a></code> job 
-produces not just the <a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">JRE downloads</a>, as described above, 
-but also the corresponding p2 update for those JREs.
+produces not just the <a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">JRE downloads</a>, as described above, 
+but also the corresponding p2 update site for those JREs.
 The process works as follows:
 </p>
 <ul>
 <li>
-Each JRE download page includes a <code><a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/justj.manifest">justj.manifest</a></code> 
+Each JRE download page includes a <code><a href="https://download.eclipse.org/justj/jres/14/downloads/latest/justj.manifest">justj.manifest</a></code> 
 which is essentially just a list of URLs (generally relative URLs) pointing to the set of JRE packages, i.e., all the <code>*.tar.gz</code> files.
 </li>
 <li>
 The <code>justj.jregen</code> model is <em>reconciled</em> against a <code>justj.manifest</code>'s referenced <code>*.tar.gz</code> files.
 Each <code>*.tar.gz</code> file contains an <code>org.eclipse.justj.properties</code> file in the archive root and that files contains the key information captured during the generation of the JRE,
-i.e., precisely the properties displayed on the <a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">JRE download page</a> under each JRE.
+i.e., precisely the properties displayed on the <a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">JRE download page</a> under each JRE.
 That information is used to flesh out the model with corresponding <code>JVM</code> instances (one per JRE Java version), 
 each of those with corresponding <code>Variant</code> children (one per operating-specific variant of the Java version).
 The resulting reconciled <code><a href="https://ci.eclipse.org/justj/job/build-jres/lastSuccessfulBuild/artifact/justj.jregen/*view*/">justj.jregen</a></code> 
@@ -178,12 +173,12 @@ Specifically it produces the <a href="https://ci.eclipse.org/justj/job/build-jre
 <li>
 The <code>jre-gen</code> folder's <code>pom.xml</code> then drives a Maven/Tycho build to produce an update site that is published here:
 <blockquote>
-<a href="https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest</a>
+<a href="https://download.eclipse.org/justj/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/jres/14/updates/nightly/latest</a>
 </blockquote>
 That update site, like the Tools update site, is maintained by <code>org.eclipse.justj.p2</code>.
 It contains detailed information about the installable units available in each p2 repository.
 For traceability, all the information from the original <code>justj.jregen</code> model is captured by the content metadata of the p2 repository, 
-sufficiently so that the <code><a href="https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest/model.jregen">justj.jregen</a></code> instance
+sufficiently so that the <code><a href="https://download.eclipse.org/justj/jres/14/updates/nightly/latest/model.jregen">justj.jregen</a></code> instance
 can be reconstructed from the repository's metadata.
 </li>
 </ul>

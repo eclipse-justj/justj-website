@@ -50,7 +50,7 @@ Of course you must specify the update site that contains this JRE
 and naturally you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/sandbox/jres/14/updates/nightly/latest</a>
+<a href="https://download.eclipse.org/justj/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/jres/14/updates/nightly/latest</a>
 </blockquote>
 <p>
 There is a <a href="https://www.eclipse.org/forums/index.php/t/1104206/">forum thread</a> 
@@ -98,6 +98,39 @@ The former <b>must</b> be used if you specify the target platform using a <code>
 <p>
 
 <p>
+Tycho 2.0.0 is provides support for specifying, 
+<code>&lt;executionEnvironmentDefault>none&lt;/executionEnvironmentDefault></code>, or
+<code>&lt;executionEnvironment>none&lt;/executionEnvironment></code>
+but the experience using this with Oomph's build is that this caused problems when building features and plugins in addition to building products.
+It apparently works well for the Eclipse Packaging Product's build though.
+</p>
+
+<p>
+To avoid such problems, the JustJ p2 repositories now include additional installable units that can be used directly as an execution environment, e.g., like this:
+<p>
+<pre>
+  &lt;plugin>
+     &lt;groupId>org.eclipse.tycho&lt;/groupId>
+     &lt;artifactId>target-platform-configuration&lt;/artifactId>
+     &lt;version>${tycho-version}&lt;/version>
+     &lt;configuration>
+        <b style="color: DarkOliveGreen;">&lt;executionEnvironmentDefault>org.eclipse.justj.openjdk.hotspot.jre.full-14&lt;/executionEnvironmentDefault></b>
+     &lt;/configuration>
+  &lt;/plugin>
+</pre>
+<p>
+There is one such <code>a.jre.*</code> installable unit for each JRE variant and it provides the execution environment capabilities and, most importly, exactly the actual the java package capabilities of that JRE.
+<p>
+
+<p>
+Oomph has a complex and complete example of how to design a build to use the JustJ JREs.
+In this case the build produces both a product without a JRE as well as one with a JRE for maximum flexibility.
+See <a href="https://git.eclipse.org/c/oomph/org.eclipse.oomph.git/tree/products/org.eclipse.oomph.setup.installer.product">Oomph's Git repository</a> for details
+or replicate the environment locally where you can run the Maven build locally to see how it works:
+<a href="https://www.eclipse.org/setups/installer/?url=http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/configurations/OomphConfiguration.setup&show=true" target="oomph_setup" style="margin-left: 2em; margin-top: 1ex; margin-bottom: 1ex; font-weight: bold; border: 1px solid Chocolate;  background-color: DarkOrange; color: white; padding: 0.25ex 0.25em; text-align: center; text-decoration: none; display: inline-block;">Create Oomph Development Environment...</a>
+</p>
+
+<p>
 If you have problems and need help, don't be afraid to ask.
 Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
 </p>
@@ -128,7 +161,7 @@ it needs to be updated only whenever there is a new Java release.
 The result of this analysis is used to produce the JREs with <code>.minimal</code> qualifier on the download site:
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/">https://download.eclipse.org/justj/sandbox/jres/14/downloads/latest/</a>
+<a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">https://download.eclipse.org/justj/jres/14/downloads/latest/</a>
 </blockquote>
 <p>
 The <code>.stripped</code> versions of these are less than 1/2 the size of the corresponding <code>.full.stripped</code> version.

@@ -50,18 +50,36 @@ Of course you must specify the update site that contains this JRE
 and naturally you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/jres/14/updates/nightly/latest/">https://download.eclipse.org/justj/jres/14/updates/nightly/latest</a>
+<a href="https://download.eclipse.org/justj/jres/15/updates/release/latest">https://download.eclipse.org/justj/jres/15/updates/release/latest</a>
 </blockquote>
 <p>
 There is a <a href="https://www.eclipse.org/forums/index.php/t/1104206/">forum thread</a> 
 and a <a href="https://www.eclipse.org/lists/justj-dev/msg00003.html">mailing list thread</a> recording the experience of others who have experimented with this.
+The <a href="https://www.eclipse.org/forums/index.php/t/1107858/">most recent thread</a> describes how best to get this working with Tycho 2.3.0.
+The JustJ p2 repositories include additional installable units that can be used directly as an execution environment, e.g., like this:
+</p>
+<pre>
+  &lt;plugin>
+     &lt;groupId>org.eclipse.tycho&lt;/groupId>
+     &lt;artifactId>target-platform-configuration&lt;/artifactId>
+     &lt;version>${tycho-version}&lt;/version>
+     &lt;configuration>
+        <b style="color: DarkOliveGreen;">&lt;executionEnvironment>org.eclipse.justj.openjdk.hotspot.jre.full-15&lt;/executionEnvironment></b>
+     &lt;/configuration>
+  &lt;/plugin>
+</pre>
+<p>
+There is one such <code>a.jre.*</code> installable unit for each JRE variant and it provides the execution environment capabilities and, most importly, exactly the actual the java package capabilities of that JRE.
+<p>
+
+</p>
 The Tycho/Maven build must use Tycho 1.7.0 or higher, otherwise the build will fail with a <code>NullPointerException</code>.
 The JustJ JREs have explicit negative requirements to exclude <code>a.jre</code> and <code>a.jre.javase</code> from consideration during resolution;
 this is to ensure that only the actual executation environments and Java packages provided by the real JRE are used for resolution.
-Tycho currently has problems dealing with this but <a href="https://www.eclipse.org/lists/tycho-user/msg08567.html">work is being done</a> to address that.
+Older versions of Tycho have problems dealing with this but <a href="https://www.eclipse.org/lists/tycho-user/msg08567.html">work has been done</a> to address that.
 </p>
 <p>
-In the meantime, one must either 
+One approach for older versions is to either 
 <b style="color: DarkSlateBlue;">disable</b> the use of the executation enviroment constraints during resolution,
 or <b style="color: DarkOliveGreen;">disable</b> the negative requirements themselves:
 </p>
@@ -104,23 +122,6 @@ Tycho 2.0.0 is provides support for specifying,
 but the experience using this with Oomph's build is that this caused problems when building features and plugins in addition to building products.
 It apparently works well for the Eclipse Packaging Product's build though.
 </p>
-
-<p>
-To avoid such problems, the JustJ p2 repositories now include additional installable units that can be used directly as an execution environment, e.g., like this:
-<p>
-<pre>
-  &lt;plugin>
-     &lt;groupId>org.eclipse.tycho&lt;/groupId>
-     &lt;artifactId>target-platform-configuration&lt;/artifactId>
-     &lt;version>${tycho-version}&lt;/version>
-     &lt;configuration>
-        <b style="color: DarkOliveGreen;">&lt;executionEnvironmentDefault>org.eclipse.justj.openjdk.hotspot.jre.full-14&lt;/executionEnvironmentDefault></b>
-     &lt;/configuration>
-  &lt;/plugin>
-</pre>
-<p>
-There is one such <code>a.jre.*</code> installable unit for each JRE variant and it provides the execution environment capabilities and, most importly, exactly the actual the java package capabilities of that JRE.
-<p>
 
 <p>
 Oomph has a complex and complete example of how to design a build to use the JustJ JREs.

@@ -71,6 +71,9 @@ The JustJ p2 repositories include additional installable units that can be used 
 <p>
 There is one such <code>a.jre.*</code> installable unit for each JRE variant and it provides the execution environment capabilities and, most importly, exactly the actual the java package capabilities of that JRE.
 <p>
+<p>
+When using a target platform file, this requires that the file either contains only one <code>&lt;location&gt;</code> section or uses <code>includeMode="planner"</code> on all sections: With multiple <code>&lt;location&gt;</code> sections and <code>includeMode="slicer"</code>, the <code>a.jre.org.eclipse.justj.*</code> installable unit is looked up in <em>every</em> one of the <code>&lt;location&gt;</code>s, which fails when it is only available in one of them.
+</p>
 
 </p>
 The Tycho/Maven build must use Tycho 1.7.0 or higher, otherwise the build will fail with a <code>NullPointerException</code>.

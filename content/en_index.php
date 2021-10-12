@@ -27,7 +27,7 @@ The sources of these Java runtimes are any and all versions approved by the Ecli
 <p>
 Originally approval was limited to the latest release available via <a href="https://jdk.java.net/" target="jdk.java.net">https://jdk.java.net/</a>,
 but now releases available via <a href="https://adoptium.net/" target="adoptium">https://adoptium.net/</a> are also approved.
-This as the major advantage that Long Term Support (LTS) versions are now available.
+This has the major advantage that Long Term Support (LTS) versions are now available.
 </p>
 
 <p>

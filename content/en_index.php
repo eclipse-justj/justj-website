@@ -23,7 +23,11 @@
 The form in which these are made available is intended to make these easily consumable. 
 As such, Java runtimes are available via <a href="?page=download#p2-update-sites">p2 repositories</a> as well as via direct <a href="?page=download#jre-downloads">packaged downloads</a>. 
 The sources of these Java runtimes are any and all versions approved by the Eclipse Foundation for such purposes. 
-Currently that is limited to the latest release available via <a href="https://jdk.java.net" target="jdk.java.net">https://jdk.java.net</a>.
+</p>
+<p>
+Originally approval was limited to the latest release available via <a href="https://jdk.java.net/" target="jdk.java.net">https://jdk.java.net/</a>,
+but now releases available via <a href="https://adoptium.net/" target="adoptium">https://adoptium.net/</a> are also approved.
+This as the major advantage that Long Term Support (LTS) versions are now available.
 </p>
 
 <p>
@@ -185,7 +189,7 @@ can be reconstructed from the repository's metadata.
 
 <p>
 In summary, the entire process of building JREs from JDKs and repackaging them in the form of a p2 update site is fully automated, with only the URLs for the JDKs as input.
-This process has been validated using URLs from <a href="https://adoptopenjdk.net/archive.html">https://adoptopenjdk.net/</a> in addition to those those from <a href="https://jdk.java.net">https://jdk.java.net</a>,
+This process has been validated using URLs from <a href="https://adoptopenjdk.net/archive.html">https://adoptopenjdk.net/</a> in addition to those those from <a href="https://jdk.java.net/">https://jdk.java.net/</a> and <a href="https://adoptium.net/">https://adoptium.net/</a>,
 but we do not currently have Eclipse Foundation approval to redistribute results from that source.
 </p>
 <p>

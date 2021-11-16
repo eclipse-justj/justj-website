@@ -108,7 +108,7 @@ $links[] = array(
 $links[] = array(
   'icon' => 'fa-users', // Required
   'url' => '?page=developer', // Required
-  'title' => 'Geting Involved', // Required
+  'title' => 'Getting Involved', // Required
   // 'target' => '_blank', // Optional
   'text' => 'Git, Workspace Setup, Wiki, Committers' // Optional
 );

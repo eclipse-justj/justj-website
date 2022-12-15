@@ -17,7 +17,7 @@
 
 <p>
 In order to test the validity and integrity of the JustJ JRE p2 repositories,
-a <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/products/org.eclipse.justj.tools.sample.product/Sample.product">Sample.product</a></code> is defined to use them.
+a <code><a href="https://github.com/eclipse-justj/justj.tools/blob/master/products/org.eclipse.justj.tools.sample.product/Sample.product">Sample.product</a></code> is defined to use them.
 The <code><a href="https://ci.eclipse.org/justj/job/build-sample-product/">build-sample-product</a></code> pipeline builds them and publishes them to
 <code><a href="https://download.eclipse.org/justj/www/download.eclipse.org.php?file=sample-products">https://download.eclipse.org/justj/sample-products/</a>*</code>.
 All three versions have been verified to work on each of their respective operating systems.
@@ -185,7 +185,7 @@ Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs
 <p>
 As described in the <a href="?page=index#jre-p2">Automated JRE p2 Generation with <img src="justj_title.svg" atl="justj" style="height: 2ex;"/>.tools</a> section of the main page,
 the generation of a JRE p2 repository is fully automated,
-driven by a <code><a href="https://git.eclipse.org/c/justj/justj.git/tree/model/org.eclipse.justj.model/justj.jregen">justj.jregen</a></code> instance.
+driven by a <code><a href="https://github.com/eclipse-justj/justj/blob/master/model/org.eclipse.justj.model/justj.jregen">justj.jregen</a></code> instance.
 To drive a Maven/Tycho build, the required scaffolding is generated.
 </p>
 <p>

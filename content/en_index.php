@@ -87,12 +87,12 @@ jlink --add-modules=java.base,java.xml,jdk.unsupported --output .
 
 <p>
 The process for generating a JRE from a JDK has been fully automated via 
-<code><a href="https://git.eclipse.org/c/justj/justj.git/tree/releng/org.eclipse.justj.releng/build-jre.sh">build-jre.sh</a></code> which is designed to run on any operating system;
+<code><a href="https://github.com/eclipse-justj/justj/blob/master/releng/org.eclipse.justj.releng/build-jre.sh">build-jre.sh</a></code> which is designed to run on any operating system;
 on Windows, <a href="https://git-scm.com/download/win">Git Bash</a> or <a href="https://cygwin.com/install.html">Cygwin</a> is needed.
 The process of producing a JRE must run natively on each operating system using an operating-system-specific JDK.
 </p>
 <p>
-The <code>build-jre.sh</code> script is used by a <code><a href="https://git.eclipse.org/c/justj/justj.git/tree/releng/org.eclipse.justj.releng/Jenkinsfile">Jenkins pipeline script</a></code>
+The <code>build-jre.sh</code> script is used by a <code><a href="https://github.com/eclipse-justj/justj/blob/master/releng/org.eclipse.justj.releng/Jenkinsfile">Jenkins pipeline script</a></code>
 which in turn is used by the <code><a href="https://ci.eclipse.org/justj/job/build-jres/">build-jres</a></code> job to produce the following downloads:
 </p>
 <blockquote>
@@ -131,24 +131,24 @@ all the needed scaffolding is generated from a model that concisely captures all
 </p>
 
 <p>
-The model along with associated tools are maintained in <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/">justj.tools.git</a></code> and are available at following update site:
+The model along with associated tools are maintained in <code><a href="https://github.com/eclipse-justj/justj.tools">justj.tools</a></code> and are available at following update site:
 </p>
 <blockquote>
 <a href="https://download.eclipse.org/justj/tools/updates">https://download.eclipse.org/justj/tools/updates</a>
 </blockquote>
 <p>
-The tools needed to maintain that update site are part of the JustJ Tools suite, i.e., <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/plugins/org.eclipse.justj.p2">org.eclipse.justj.p2</a></code>.
+The tools needed to maintain that update site are part of the JustJ Tools suite, i.e., <code><a href="https://github.com/eclipse-justj/justj.tools/tree/master/plugins/org.eclipse.justj.p2">org.eclipse.justj.p2</a></code>.
 </p>
 
 <p>
-The <code><a href="https://git.eclipse.org/c/justj/justj.tools.git/tree/plugins/org.eclipse.justj.codegen/model/Model.ecore">model.ecore</a></code> was used to generate the <code>org.eclipse.justj.codegen</code> plugin.
+The <code><a href="https://github.com/eclipse-justj/justj.tools/blob/master/plugins/org.eclipse.justj.codegen/model/Model.ecore">model.ecore</a></code> was used to generate the <code>org.eclipse.justj.codegen</code> plugin.
 That plugin implements the generation process.
 </p>
 
 <p>
-An instance of that model, <code><a href="https://git.eclipse.org/c/justj/justj.git/tree/model/org.eclipse.justj.model/justj.jregen">justj.jregen</a></code>, 
-is maintained in <code><a href="https://git.eclipse.org/c/justj/justj.git/tree/">justj.git</a></code>.
-The <code><a href="https://git.eclipse.org/c/justj/justj.git/tree/releng/org.eclipse.justj.releng/Jenkinsfile">Jenkins pipeline script</a></code>
+An instance of that model, <code><a href="https://github.com/eclipse-justj/justj/blob/master/model/org.eclipse.justj.model/justj.jregen">justj.jregen</a></code>, 
+is maintained in <code><a href="https://github.com/eclipse-justj/justj/">justj</a></code>.
+The <code><a href="https://github.com/eclipse-justj/justj/blob/master/releng/org.eclipse.justj.releng/Jenkinsfile">Jenkins pipeline script</a></code>
 used by the <code><a href="https://ci.eclipse.org/justj/job/build-jres/">build-jres</a></code> job 
 produces not just the <a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">JRE downloads</a>, as described above, 
 but also the corresponding p2 update site for those JREs.

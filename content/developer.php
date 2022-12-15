@@ -15,13 +15,16 @@
 
 <h2>Git Repositories</h2>
 <p>
-<code><a href="https://git.eclipse.org/c/justj/justj.tools.git/">justj.tools.git</a></code> - the tools used to generate JREs and to manage the <code><a href="https://download.eclipse.org/justj/">download.eclipse.org</a></code> site.
+<code><a href="https://github.com/eclipse-justj/justj.tools">justj.tools</a></code> - the tools used to generate JREs and to manage the <code><a href="https://download.eclipse.org/justj/">download.eclipse.org</a></code> site.
 </p>
 <p>
-<code><a href="https://git.eclipse.org/c/justj/justj.git/">justj.git</a></code> - the projects used for building JREs at <code><a href="https://ci.eclipse.org/justj/">https://ci.eclipse.org/justj/</a></code>.
+<code><a href="https://github.com/eclipse-justj/justj">justj</a></code> - the projects used for building JREs at <code><a href="https://ci.eclipse.org/justj/">https://ci.eclipse.org/justj/</a></code>.
 </p>
 <p>
-<code><a href="https://git.eclipse.org/c/www.eclipse.org/justj.git/">www.eclipse.org/justj.tools.git</a></code> - the project used to maintain this website.
+<code><a href="https://github.com/eclipse-justj/justj-website">justj-website</a></code> - the project used to maintain this website.
+</p>
+<p>
+<code><a href="https://github.com/eclipse-justj/.github">.github</a></code> - the project used to maintain the GitHub site.
 </p>
 
 
@@ -60,10 +63,10 @@ To best contribute to Eclipse in general, and to JustJ specifically, please do t
 <p>
 JustJ has a fully automated Oomph setup.
 To set up a local environment in which you can replicate JustJ's builds, and contribute to JustJ development, click the following link:<br/>
-<a href="https://www.eclipse.org/setups/installer/?url=https://git.eclipse.org/c/justj/justj.tools.git/plain/releng/org.eclipse.justj.tools.releng/JustJConfiguration.setup&show=true" 
+<a href="https://www.eclipse.org/setups/installer/?url=https://raw.githubusercontent.com/eclipse-justj/justj.tools/master/releng/org.eclipse.justj.tools.releng/JustJConfiguration.setup&show=true" 
      target="justj_setup" 
-     style="margin-left: 2em; margin-top: 1ex; margin-bottom: 1ex; font-weight: bold; border: 1px solid Chocolate;  background-color: DarkOrange; color: white; padding: 0.25ex 0.25em; text-align: center; text-decoration: none; display: inline-block;">
-   Create JustJ Development Environment...
+     style="margin-left: 2em; margin-top: 1ex; margin-bottom: 1ex; background-color: DarkOrange; text-align: center; text-decoration: none; display: inline-block;">
+   <img src="https://download.eclipse.org/oomph/www/setups/svg/justj.svg" alt="Create JustJ Development Environment..."/>
 </a><br>
 Please read the instructions that follow and review the screen captures, each of which can be clicked to see the full image details.
 </p>

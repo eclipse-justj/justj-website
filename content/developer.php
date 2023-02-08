@@ -44,18 +44,18 @@ To best contribute to Eclipse in general, and to JustJ specifically, please do t
 </p>
 <ul>
   <li>
-  If you don't already have an Eclipse Account, <a href="https://accounts.eclipse.org/user/register" target="_blank">register</a> now.
+  If you don't already have a GitHub Account, <a href="https://github.com/signup" target="_blank">register</a> now.
   </li>
   <li>
-  If you haven't already signed your Eclipse Contributor Agreement, <a href="https://accounts.eclipse.org/user/eca" target="_blank">sign</a> now.
+  If you don't already have an Eclipse Account, <a href="https://accounts.eclipse.org/user/register" target="_blank">register</a> now;
+  use the same email address for both accounts.
   </li>
   <li>
-  If you haven't already set up your Eclipse Gerrit Account, <a href="https://wiki.eclipse.org/Gerrit#User_Account" target="_blank">set it up</a> now.
+  If you haven't already signed your Eclipse Contributor Agreement, <a href="https://accounts.eclipse.org/user/eca" target="_blank">sign</a> now;
+  for this to be used to process your pull requests, you need to use the same email address as is used for your GitHub account.
   </li>
   <li>
-  If you're not familiar with Bugzilla,
-  learn <a href="https://wiki.eclipse.org/Bug_Reporting_FAQ" target="_blank">how to use Bugzilla</a>
-  and learn how Buzilla fits into the <a href="https://wiki.eclipse.org/Development_Resources/HOWTO/Bugzilla_Use" target="_blank">development process</a>.
+  Use each repository's <a href="https://github.com/eclipse-justj/justj/issues" target="_blank">issues list</a> to report problems and each repository's <a href="https://github.com/eclipse-justj/justj/discussions" target="_blank">discussions</a> list to ask questions.
   </li>
 </ul>
 
@@ -83,19 +83,6 @@ If you've used Oomph before, many of the variables will not be prompted unless y
 Please do so now, and review the setting for <span class="detail">Git clone location rule</span> to ensure that it contains <code>${@id.locationQualifier|trim}</code> as illustrated above.
 Older versions of Oomph did not include this part, so if that is missing, use the dropdown to choose the first choice.
 Doing so will ensure that the Git clone for the website project will be properly included in the development environment.
-</p>
-
-<p>
-Of course you can do the setup using anonymous access, but to contribute back you will need an account as described in the <a href="#contributing">Contributing</a> section.
-For the <span class="detail">Eclipse Git Authentication Style</span> its best to use <code>SSH Authentication</code>.
-Choosing that will prompt for your <span class="detail">Eclipse Git/Gerrit user ID</span> and the page will look as follows:
-</p>
-<p>
-<img id="setup-variables-ssh" class="thumb border" onclick="popup('setup-variables-ssh');" src="content/setup-images/SetupVariablesWithSSH.png" alt="The Setup Variables for SSH Authentication"/>
-</p>
-<p>
-Note that all the <span class="detail">Git or Gerrit repository</span> URLs now use <code>ssh:</code> protocol and each uses your <code>git.user.id</code>.
-Here I have entered my ID <code>emerks</code>; the default <code>anonymous</code> will not work so you must change it.
 </p>
 <p>
 If you later wish to do local Maven/Tycho builds, which is highly likely,

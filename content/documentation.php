@@ -43,15 +43,19 @@ To build a plugin-based product with an embedded JRE, just include the following
 Note in particular that the plugin requires its OS-specific fragments, filtered of course so that only the appropriate one is actually installed.
 </p>
 <p>
+You may wish to use a <code>.stripped</code> variant if you don't need to use the product's JRE for debugging and hence don't need debug information nor a <code>src.jar</code>. 
+Or you may wish use to a <code>.minimal</code> variant if you know you don't need the full set of modules available in a full JDK.
 </p>
-
 <p>
 Of course you must specify the update site that contains this JRE 
 and naturally you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/jres/15/updates/release/latest">https://download.eclipse.org/justj/jres/15/updates/release/latest</a>
+<a href="https://download.eclipse.org/justj/jres/17/updates/release/latest" target="_blank">https://download.eclipse.org/justj/jres/17/updates/release/latest</a>
 </blockquote>
+<p>
+The update site's features describe each JRE and the update site's bundles document, in the <code>Properties</code> section, the jlink instructions used to build that JRE as well as the modules and packages available for that JRE to help you choose what's most appropriate for your product.
+</p>
 <p>
 There is a <a href="https://www.eclipse.org/forums/index.php/t/1104206/">forum thread</a> 
 and a <a href="https://www.eclipse.org/lists/justj-dev/msg00003.html">mailing list thread</a> recording the experience of others who have experimented with this.
@@ -136,7 +140,7 @@ or replicate the environment locally where you can run the Maven build locally t
 
 <p>
 If you have problems and need help, don't be afraid to ask.
-Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
+Community feedback is welcome. Please use <a href="https://github.com/eclipse-justj/justj/discussions">JustJ Discussions</a> for this purpose.
 </p>
 
 <h2 id="jdeps">Building Smaller JREs with <code>jdeps</code></h2>
@@ -151,7 +155,7 @@ which generates <a href="https://download.eclipse.org/justj/jdeps/">a detailed r
 Reducing the JRE size is particularly important for smaller applications such as the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> 
 which is currently roughly 53MB in size.
 Shipping that with a 70MB JRE would be a significant bloat.
-Furthermore, most users treat it as disposable, repeatedly downloading a new one with each release.
+Furthermore, most users treat the installer as disposable, repeatedly downloading a new one with each release.
 It is downloaded roughly 3 million times per release cycle.
 </p>
 <p>
@@ -162,13 +166,16 @@ This has the advantage that the large JRE fragment will be in the shared bundle 
 it needs to be updated only whenever there is a new Java release.
 </p>
 <p>
-The result of this analysis is used to produce the JREs with <code>.minimal</code> qualifier on the download site:
+The result of jdeps analysis is used to produce the JREs with <code>.minimal</code> qualifier on the download site:
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/jres/14/downloads/latest/">https://download.eclipse.org/justj/jres/14/downloads/latest/</a>
+<a href="https://download.eclipse.org/justj/jres/17/downloads/latest/">https://download.eclipse.org/justj/jres/17/downloads/latest/</a>
 </blockquote>
 <p>
-The <code>.stripped</code> versions of these are less than 1/2 the size of the corresponding <code>.full.stripped</code> version.
+Each <code>xyz.stripped</code> version, i.e., with debug information stripped and excluding the <code>src.jar</code> with sources used only for debuggin, are less than 1/2 the size of the corresponding <code>xyz</code> version.
+</p>
+<p>
+The <code>.base</code> verions are the absolute minimal JRE needed to run Equinox with logging and without reflection warnings.
 </p>
 <p>
 Some outstanding concerns that remain are of course the impact of what's excluded.
@@ -178,7 +185,7 @@ The absence of the <code>jdk.localedata</code> module might also be a concern if
 </p>
 
 <p>
-Community feedback is welcome. Please use <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=562908">Bug 562908</a> for this purpose.
+Community feedback is welcome. Please use <a href="https://github.com/eclipse-justj/justj/issues">JustJ Discussions</a> for this purpose.
 </p>
 
 <h2 id="jre-gen-anatomy">Anatomy of <code><a href="https://ci.eclipse.org/justj/job/build-jres/lastSuccessfulBuild/artifact/jre-gen/">jre-gen</a></code></h2>

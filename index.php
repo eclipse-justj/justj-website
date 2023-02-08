@@ -95,7 +95,6 @@ $variables['main_container_classes'] = 'container';
 $variables['main_container_html'] = '';
 
 // Insert header navigation for project websites.
-// Bug 436108 - https://bugs.eclipse.org/bugs/show_bug.cgi?id=436108
 $links = array();
 $links[] = array(
   'icon' => 'fa-download', // Required

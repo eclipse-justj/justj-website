@@ -27,9 +27,9 @@ if ($serverName != "localhost") {
        header('Location: https://download.eclipse.org/justj/www/?page=download');
        exit;
      }
-  } else if ($serverName != "www.eclipse.org") {
-    // The other pages are best served by www.eclipse.org.
-    header('Location: https://www.eclipse.org/justj/?page=' . $page);
+  } else if ($serverName != "eclipse.dev") {
+    // The other pages are best served by eclipse.dev.
+    header('Location: https://eclipse.dev/justj/?page=' . $page);
     exit;
   }
 }

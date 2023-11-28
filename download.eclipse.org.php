@@ -70,8 +70,8 @@ $variables['btn_cfa'] = array(
   'hide' => FALSE, // Optional - Hide the CFA button.
   'html' => '', // Optional - Replace CFA html and insert custom HTML.
   'class' => 'btn btn-huge btn-warning', // Optional - Replace class on CFA link.
-  'href' => '//www.eclipse.org/setups/donate', // Optional - Replace href on CFA link.
-  'text' => '<i class="fa fa-star"></i> Donate' // Optional - Replace text of CFA link.
+  'href' => '//www.eclipse.org/setups/sponsor', // Optional - Replace href on CFA link.
+  'text' => '<i class="fa fa-star"></i> Sponsor' // Optional - Replace text of CFA link.
 );
 
 // Set Solstice theme variables. (Array)

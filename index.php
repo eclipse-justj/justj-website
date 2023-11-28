@@ -63,6 +63,10 @@ if ($page == "download") {
   $pageTitle .= " Getting Involved";
   $contentScript = "developer.php";
   $Breadcrumb->addCrumb("Getting Involved", ".?page=developer", "_self");
+} else if ($page == "tools") {
+  $pageTitle .= " Tools";
+  $contentScript = "tools.php";
+  $Breadcrumb->addCrumb("Tools", ".?page=tools", "_self");
 } else if ($page == "documentation") {
   $pageTitle .= " Documentation";
   $contentScript = "documentation.php";
@@ -101,15 +105,7 @@ $links[] = array(
   'url' => '.?page=download', // Required
   'title' => 'Download', // Required
   // 'target' => '_blank', // Optional
-  'text' => 'Distributions, Update Sites' // Optional
-);
-
-$links[] = array(
-  'icon' => 'fa-users', // Required
-  'url' => '?page=developer', // Required
-  'title' => 'Getting Involved', // Required
-  // 'target' => '_blank', // Optional
-  'text' => 'Git, Workspace Setup, Wiki, Committers' // Optional
+  'text' => 'Distribution Sites' // Optional
 );
 
 $links[] = array(
@@ -117,7 +113,23 @@ $links[] = array(
   'url' => '?page=documentation', // Required
   'title' => 'Documentation', // Required
   // 'target' => '_blank', // Optional
-  'text' => 'Tutorials, Examples, Videos, Online Reference' // Optional
+  'text' => 'Details' // Optional
+);
+
+$links[] = array(
+  'icon' => 'fa-wrench', // Required
+  'url' => '?page=tools', // Required
+  'title' => 'Tools', // Required
+  // 'target' => '_blank', // Optional
+  'text' => 'p2 Update Site Manager' // Optional
+);
+
+$links[] = array(
+  'icon' => 'fa-users', // Required
+  'url' => '?page=developer', // Required
+  'title' => 'Contribution', // Required
+  // 'target' => '_blank', // Optional
+  'text' => 'Environment Setup' // Optional
 );
 
 $links[] = array(
@@ -125,7 +137,7 @@ $links[] = array(
   'url' => '?page=support', // Required
   'title' => 'Support', // Required
   // 'target' => '_blank', // Optional
-  'text' => 'Bug Tracker, Forum, Professional Support' // Optional
+  'text' => 'Issues, Discussions' // Optional
 );
 
 $variables['header_nav'] = array(
@@ -144,8 +156,8 @@ $variables['btn_cfa'] = array(
   'hide' => FALSE, // Optional - Hide the CFA button.
   'html' => '', // Optional - Replace CFA html and insert custom HTML.
   'class' => 'btn btn-huge btn-warning', // Optional - Replace class on CFA link.
-  'href' => '//www.eclipse.org/setups/donate', // Optional - Replace href on CFA link.
-  'text' => '<i class="fa fa-star"></i> Donate' // Optional - Replace text of CFA link.
+  'href' => '//www.eclipse.org/setups/sponsor', // Optional - Replace href on CFA link.
+  'text' => '<i class="fa fa-star"></i> Sponsor' // Optional - Replace text of CFA link.
 );
 
 // Set Solstice theme variables. (Array)
@@ -202,6 +214,17 @@ code a:link, code a:visited {
   display: inline-block;
   padding-left: 4em;
   text-indent:-4em;
+}
+
+.arg-description {
+  display: block;
+  padding-left: 4em;
+  text-indent:-4em;
+}
+
+.parm {
+  color: Indigo;
+  background-color: Lavendar;
 }
 
 blockquote {

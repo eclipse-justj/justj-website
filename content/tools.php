@@ -279,6 +279,18 @@ Note in particular that release builds <b>do not</b> promote this site.
 </ul>
 
 <div class="arg-description">
+<code>-baseline-url</code> -
+The URL from which to check for baseline replacements for the artifacts of the <code>-promote</code>site.
+</div>
+<ul class="jre-gen-group">
+  <li class="jre-gen-item">
+    <span class="jre-gen-description"><code class="parm">&lt;url&gt;</code> -
+    A URL. <b>Optional</b>.
+    </span>
+  <li>
+</ul>
+
+<div class="arg-description">
 <code>-promote-products</code> -
 The local filesystem folder location of the products, generally those produced by Tycho, to promote along with the update site.
 The product names are stored in the repository property <code>products</code>.

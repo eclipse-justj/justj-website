@@ -549,7 +549,7 @@ The <code>org.eclipse.justj.p2.manager</code> application can be invoked as foll
 </p>
 <pre>
   &lt;properties&gt;
-    &lt;eclipse.repo&gt;https://download.eclipse.org/releases/2023-09&lt;/eclipse.repo&gt;
+    &lt;eclipse.repo&gt;https://download.eclipse.org/releases/latest&lt;/eclipse.repo&gt;
     &lt;justj.tools.repo&gt;https://download.eclipse.org/justj/tools/updates/nightly/latest&lt;/justj.tools.repo&gt;
     &lt;org.eclipse.storage.user&gt;genie.justj&lt;/org.eclipse.storage.user&gt;
     &lt;org.eclipse.justj.p2.manager.args&gt;

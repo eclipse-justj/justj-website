@@ -20,6 +20,15 @@
 
   <code><a href="https://download.eclipse.org/justj/tools/updates/">https://download.eclipse.org/justj/tools/updates/</a></code>
 
+  <h3>JustJ Eclipse Packaging Project Updates</h3>
+  
+  <p>
+  JustJ provides an update site with updates specifically for <a href="https://github.com/eclipse-packaging">EPP</a>
+  to provide updates to the latest long-term-support JRE version required by the packages.
+  </p>
+
+  <code><a href="https://download.eclipse.org/justj/epp/">https://download.eclipse.org/justj/epp/</a></code>
+
   <h3>Repositories Analyzed for <code>jdeps</code></h3>
 
   Visit the <code><a href="https://download.eclipse.org/justj/jdeps/">https://download.eclipse.org/justj/jdeps/</a></code> index.

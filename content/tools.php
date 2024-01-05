@@ -381,7 +381,7 @@ Such removal helps reduce the likelihood that a user will install something from
 
 <div class="arg-description">
 <code>-maven-wrapped-mapping</code> -
-Mappings for modifying or removing the <code>maven-wrapped-</code> installable unit properties, i.e.,
+Mappings for modifying or removing the <code>maven-wrapped-</code> (or <code>maven-</code>) installable unit properties, i.e.,
 for mapping a maven coordinate <code>groupId:artifactId:version</code> to its replacement subsitution, or to nothing, for removal. E.g., <br/>
 <code>org.eclipse.orbit:ant:(.*)</code><br/>
 <code>org.eclipse.orbit:(xyz:.*)-&gt;org.apache:$1</code><br/>
@@ -506,6 +506,40 @@ This argument may be repeated to specify multiple folders to exclude from being 
     </span>
   <li>
 </ul>
+
+<div class="arg-description">
+<code>-summary</code> -
+The number of update site columns in the summary table.
+Each row of the tabular summary corresonds to an bundle symbolic name of an installable unit with an ID matching the <code>-summary-iu-pattern</code>.
+Each column corresponds to an update site, starting with <code>nightly/latest</code>, <code>milestone/latest</code>, and then the releases from the most recent to the oldest,
+where the specified value for <code>-summary</code> truncates that list.
+Each cells displays the version(s) of the installable unit(s) with the corresonding bundle symbolic name in the corresponding site.
+</div>
+<ul class="jre-gen-group">
+</ul>
+<ul class="jre-gen-group">
+  <li class="jre-gen-item">
+    <span class="jre-gen-description"><code class="parm">&lt;integer&gt;</code> -
+    A positive integer.
+    <b>Optional</b>, i.e., no generated summary table.
+    </span>
+  <li>
+</ul>
+
+<div class="arg-description">
+<code>-summary-iu-pattern</code> -
+A regular expression used to select the installable units with matching ID for display in the <code>-summary</code> table.
+</div>
+<ul class="jre-gen-group">
+  <li class="jre-gen-item">
+    <span class="jre-gen-description"><code class="parm">&lt;pattern&gt;</code> -
+    A valid <code>java.util.Pattern</code>.
+    <b>Default</b>, <code>.*(?&lt;!\.source|\.feature\.group|\.feature\.jar)</code>, i.e., exclude all feature IUs and all source IUs.
+    </span>
+  <li>
+</ul>
+
+
 
 <div class="arg-description">
 <code>-simrel-alias</code> -
@@ -651,7 +685,7 @@ The following is a sampling of update sites maintained by the <code>org.eclipse.
 </li>
 <li class="arg-description">
 <code><a href="https://download.eclipse.org/cbi/updates/p2-aggregator/products/milestone/latest/" target="_blank">https://download.eclipse.org/cbi/updates/p2-aggregator/products/</a></code><br/>
-- uses <code>-products</code>.
+- uses <code>-products</code> and <code>-summary</code>.
 </li>
 <li class="arg-description">
 <code><a href="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/" target="_blank">https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/</a></code><br/>

@@ -132,7 +132,7 @@ The type of the build.
         This will promote the update site as a nightly build.
         The folder name will be of the form <code><b>N</b>yyyyMMddHHmm</code>.
         If more than the <code>-retain</code> number of nightly repositories are present,
-        the older ones will be deleted
+        the older ones will be deleted.
         </span>
       <li>
       <li class="jre-gen-item">
@@ -140,6 +140,7 @@ The type of the build.
         This will promote the update site as a milestone build.
         The folder name will be of the form <code><b>S</b>yyyyMMddHHmm</code>.
         Any existing milestone site that has a lower logical version than this newly promoted site will be deleted.
+        Promotion will <b>fail</b> if there is not already at least one nightly build present in the update site.
         </span>
       <li>
       <li class="jre-gen-item">
@@ -148,6 +149,7 @@ The type of the build.
         Instead it will promote (mirror) the latest milestone build as a release build.
         I.e., the release update site will contain byte-for-byte the same artifacts as the latest milestone.
         The folder name will be of the form <code>x.y.z</code> where the <code>-version-iu</code> or <code>-version-iu-pattern</code> determines the version.
+        Promotion will <b>fail</b> if there is not already at least one milestone build&mdash;the one being promoted&mdash;present in the update site.
         </span>
       <li>
     </ul>

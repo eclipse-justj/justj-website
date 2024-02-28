@@ -146,7 +146,7 @@ The type of the build.
         <span class="jre-gen-description"><code>release</code> -
         This will <b>not</b> promote the newly built site as a release build.
         Instead it will promote (mirror) the latest milestone build as a release build.
-        I.e., the release update site will contain byte-for-byte the same artfiacts as the latest milestone.
+        I.e., the release update site will contain byte-for-byte the same artifacts as the latest milestone.
         The folder name will be of the form <code>x.y.z</code> where the <code>-version-iu</code> or <code>-version-iu-pattern</code> determines the version.
         </span>
       <li>

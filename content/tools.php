@@ -378,7 +378,7 @@ If all features are primary, then none of them are shown in bold on all the othe
   <li class="jre-gen-item">
     <span class="jre-gen-description"><code class="parm">&lt;pattern&gt;</code> -
     A valid <code>java.util.Pattern</code>.
-    <b>Default</b>, <code>.*\.sdk([_.-]feature)?\.feature\.group</code>.
+    <b>Default</b> <code>.*\.sdk([_.-]feature)?\.feature\.group</code>.
     </span>
   <li>
 </ul>
@@ -437,6 +437,21 @@ This argument may be repeated to specify multiple breadcumbs.
     <span class="jre-gen-description"><code class="parm">&lt;string-url-pair&gt;</code> -
     An arbitrary label followed by an optional URL, separated by a space.</span>
     <b>Optional</b> but this is an important branding detail about the project producing the content, so best to have <b>at least one</b>.
+  <li>
+</ul>
+
+<div class="arg-description">
+<code>-archive</code> -
+An arbitrary label with an associated URL, separated by a space from the label, for use in the archive navigation of each generated index page. E.g.,<br>
+<code>0.0.1 - 0.10.12 https://example.org/downloads</code><br/>
+This argument may be repeated to specify multiple archive links.
+The links are placed in a section labeled <code>Archive</code> immediately after the <code>Release</code> section in the navigation bar.
+</div>
+<ul class="jre-gen-group">
+  <li class="jre-gen-item">
+    <span class="jre-gen-description"><code class="parm">&lt;string-url-pair&gt;</code> -
+    An arbitrary label followed by a URL, separated by a space.</span>
+    <b>Optional</b>.
   <li>
 </ul>
 

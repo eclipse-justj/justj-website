@@ -368,6 +368,22 @@ E.g., often one does not wish to list 3rd party installable units in the index.
 </ul>
 
 <div class="arg-description">
+<code>-primary-iu-filter-pattern</code> -
+A regular expression used to filter down the installable units, by ID, that are to be considered primary features, i.e., SDKs.
+This subset of primary features is presented on the root page and is shown in bold on all the other pages.
+If there are no primary features, then all features are presented on the root page.
+If all features are primary, then none of them are shown in bold on all the other pages.
+</div>
+<ul class="jre-gen-group">
+  <li class="jre-gen-item">
+    <span class="jre-gen-description"><code class="parm">&lt;pattern&gt;</code> -
+    A valid <code>java.util.Pattern</code>.
+    <b>Default</b>, <code>.*\.sdk([_.-]feature)?\.feature\.group</code>.
+    </span>
+  <li>
+</ul>
+
+<div class="arg-description">
 <code>-excluded-categories-pattern</code> -
 A regular expression used to filter away category installable units with matching ID.
 Such removal helps reduce the likelihood that a user will install something from that category.

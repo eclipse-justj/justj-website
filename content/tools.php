@@ -268,9 +268,9 @@ A remote source/destination specifification as used by <a href="https://en.wikip
 
 <div class="arg-description">
 <code>-promote</code> -
-The local filesystem location of the simple p2 update site to promote.
+The local filesystem location of the simple p2 update site to promote, or a URL for the remote p2 update site to promote.
 The promotion is done as specified by the <code>-build-type</code>.
-Note in particular that release builds <b>do not</b> promote this site.
+Note in particular that release builds <b>do not</b> promote the specified site.
 </div>
 <ul class="jre-gen-group">
   <li class="jre-gen-item">
@@ -422,6 +422,8 @@ The label used as the project name in the generated index pages.
     <span class="jre-gen-description"><code class="parm">&lt;string&gt;</code> -
     An artibary string.
     <b>Default</b> <code>Project</code>.
+    <br/>
+    If the value contains space, then in a command-line context, the value must be quoted.
     </span>
   <li>
 </ul>
@@ -435,8 +437,11 @@ This argument may be repeated to specify multiple breadcumbs.
 <ul class="jre-gen-group">
   <li class="jre-gen-item">
     <span class="jre-gen-description"><code class="parm">&lt;string-url-pair&gt;</code> -
-    An arbitrary label followed by an optional URL, separated by a space.</span>
+    An arbitrary label followed by an optional URL, separated by a space.
     <b>Optional</b> but this is an important branding detail about the project producing the content, so best to have <b>at least one</b>.
+    <br/>
+    In a command-line context, the value must be quoted.
+    </span>
   <li>
 </ul>
 
@@ -450,8 +455,11 @@ The links are placed in a section labeled <code>Archive</code> immediately after
 <ul class="jre-gen-group">
   <li class="jre-gen-item">
     <span class="jre-gen-description"><code class="parm">&lt;string-url-pair&gt;</code> -
-    An arbitrary label followed by a URL, separated by a space.</span>
+    An arbitrary label followed by a URL, separated by a space.
     <b>Optional</b>.
+    <br/>
+    In a command-line context, the value must be quoted.
+    </span>
   <li>
 </ul>
 

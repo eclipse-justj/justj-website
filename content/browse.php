@@ -77,7 +77,7 @@ if ($baseURL == '') {
   $mainURL = $baseURL;
 }
 
-$file = htmlentities($_GET["file"]);
+$file = str_replace("'", "&#39;", htmlentities($_GET["file"]));
 $file = preg_replace('%^/+%', '', $file);
 $file = preg_replace('%/+$%', '', $file);
 $file = preg_replace('%/+%', '/', $file);

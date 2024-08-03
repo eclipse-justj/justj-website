@@ -639,11 +639,11 @@ The <code>org.eclipse.justj.p2.manager</code> application can be invoked as foll
   &lt;build&gt;
     &lt;plugins&gt;
       &lt;plugin&gt;
-        &lt;groupId&gt;org.eclipse.tycho.extras&lt;/groupId&gt;
-        &lt;artifactId&gt;tycho-eclipserun-plugin&lt;/artifactId&gt;
+        &lt;groupId&gt;org.eclipse.tycho&lt;/groupId&gt;
+        &lt;artifactId&gt;tycho-eclipse-plugin&lt;/artifactId&gt;
         &lt;version&gt;${tycho-version}&lt;/version&gt;
         &lt;configuration&gt;
-          &lt;executionEnvironment&gt;JavaSE-17&lt;/executionEnvironment&gt;
+          &lt;executionEnvironment&gt;JavaSE-21&lt;/executionEnvironment&gt;
           &lt;dependencies&gt;
             &lt;dependency&gt;
               &lt;artifactId&gt;org.eclipse.justj.p2&lt;/artifactId&gt;

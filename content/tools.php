@@ -677,6 +677,7 @@ The <code>org.eclipse.justj.p2.manager</code> application can be invoked as foll
             &lt;configuration&gt;
               &lt;argLine&gt;&lt;/argLine&gt;
               &lt;appArgLine&gt;
+              &lt;![CDATA[ 
                 -consoleLog
                 -application org.eclipse.justj.p2.manager
                 -data @None
@@ -697,6 +698,7 @@ The <code>org.eclipse.justj.p2.manager</code> application can be invoked as foll
                 -favicon https://eclipse.dev/justj/justj_favicon.ico
                 -title-image https://eclipse.dev/justj/justj_title.svg
                 -body-image https://eclipse.dev/justj/justj.svg
+              ]]&gt;
               &lt;/appArgLine&gt;
             &lt;/configuration&gt;
           &lt;/execution&gt;
@@ -706,6 +708,11 @@ The <code>org.eclipse.justj.p2.manager</code> application can be invoked as foll
   &lt;/build&gt;
 </code>
 </pre>
+<p>
+Be aware that the procesing of the arguments does not properly handle tab characters as whitespace for separating arguments,
+so if you format the POM with tabs, it's best to use  <code>&lt;![CDATA[ ]]&gt;</code>
+to ensure that the formatter does not insert tabs into your <code>appArgLine</code>.
+</p>
 
 <h2 id="p2-manager-examples">Examples of Managed p2 Update Sites</h2>
 <p>

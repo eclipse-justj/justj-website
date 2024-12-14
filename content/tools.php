@@ -597,6 +597,14 @@ This provides a permanent and stable URL at the <b>start</b> of each release cyc
 </ul>
 
 <div class="arg-description">
+<code>-bree</code> -
+Can be used to generate details about the minimum execution environment of eaach bundle.
+The details are generated where the bundle's version is generated.
+</div>
+<ul class="jre-gen-group">
+</ul>
+
+<div class="arg-description">
 <code>-super</code> -
 This is used by JustJ and is not generally intended to be reused, so don't use it.
 </div>
@@ -737,7 +745,7 @@ The following is a sampling of update sites maintained by the <code>org.eclipse.
 </li>
 <li class="arg-description">
 <code><a href="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/" target="_blank">https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/</a></code><br/>
-- uses <code>-simrel-alias</code>.
+- uses <code>-simrel-alias</code> and <code>-bree</code>.
 </li>
 <li class="arg-description">
 <code><a href="https://download.eclipse.org/modeling/emf/emf/builds" target="_blank">https://download.eclipse.org/modeling/emf/emf/builds/</a></code>

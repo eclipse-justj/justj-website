@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2014-2017, 2020 Eclipse Foundation and others.
+ * Copyright (c) 2014-2017, 2020-2025 Eclipse Foundation and others.
  *
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0

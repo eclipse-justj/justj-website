@@ -429,7 +429,7 @@ The label used as the project name in the generated index pages.
 </ul>
 
 <div class="arg-description">
-<code id="breadcrumb">-breadcrumb</code> -
+<code id="breadcrumb-arg">-breadcrumb</code> -
 An arbitrary label with optional associated URL, separated by a space from the label, for use in the breadcrumbs of each generated index page. E.g.,<br>
 <code>Justj https://eclipse.dev/justj</code><br/>
 This argument may be repeated to specify multiple breadcrumbs.

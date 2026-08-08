@@ -110,14 +110,14 @@ The <code>org.eclipse.justj.p2.manager</code> application recognizes the followi
 </p>
 
 <div class="arg-description">
-<code>-quiet</code> -
+<code id="quiet">-quiet</code> -
 Whether to avoid printing detailed logging information about the processing steps of the application.
 </div>
 <ul class="jre-gen-group">
 </ul>
 
 <div class="arg-description">
-<code>-type</code> -
+<code id="type">-type</code> -
 The type of the build.
 </div>
 <ul class="jre-gen-group">
@@ -157,7 +157,7 @@ The type of the build.
 </ul>
 
 <div class="arg-description">
-<code>-retain</code> -
+<code id="retain">-retain</code> -
 The number of nightly builds to retain.
 Older <code>nightly</code> builds will automatically be deleted.
 </div>
@@ -171,7 +171,7 @@ Older <code>nightly</code> builds will automatically be deleted.
 </ul>
 
 <div class="arg-description">
-<code>-timestamp</code> -
+<code id="timestamp">-timestamp</code> -
 The timestamp, i.e., the exact time, of the build.
 </div>
 <ul class="jre-gen-group">
@@ -183,7 +183,7 @@ The timestamp, i.e., the exact time, of the build.
 </ul>
 
 <div class="arg-description">
-<code>-build-url</code> -
+<code id="build-url">-build-url</code> -
 The URL of the build job that produces the update site.
 </div>
 <ul class="jre-gen-group">
@@ -196,7 +196,7 @@ The URL of the build job that produces the update site.
 </ul>
 
 <div class="arg-description">
-<code>-commit</code> -
+<code id="commit">-commit</code> -
 The URL representing the state of the Git repository used by the build that produces the p2 repository.
 This is stored as a repository property named <code>commit</code>.
 </div>
@@ -210,7 +210,7 @@ This is stored as a repository property named <code>commit</code>.
 </ul>
 
 <div class="arg-description">
-<code>-root</code> -
+<code id="root">-root</code> -
 The root location of the <b>local mirror</b> of the update site.
 The promoted update site will be mirrored to this location.
 In addition, the <code>-remote</code> update site will be partially mirrored using <code>rsync</code> to this location.
@@ -226,7 +226,7 @@ The final result will be promoted to the <code>-remote</code> host also using <c
 </ul>
 
 <div class="arg-description">
-<code>-target-url</code> -
+<code id="target-url">-target-url</code> -
 The URL at which the <code>-root</code> of site will exist once promoted to the <code>-remote</code> server.
 This is used for the display of links and also for the generation of the <code>p2.mirrorsURL</code> property in the artifact metadata.
 </div>
@@ -239,7 +239,7 @@ This is used for the display of links and also for the generation of the <code>p
 </ul>
 
 <div class="arg-description">
-<code>-relative</code> -
+<code id="relative">-relative</code> -
 The relative location below the root at which to target the promotion and generation.
 </div>
 <ul class="jre-gen-group">
@@ -251,8 +251,8 @@ The relative location below the root at which to target the promotion and genera
 </ul>
 
 <div class="arg-description">
-<code>-remote</code> -
-A remote source/destination specifification as used by <a href="https://en.wikipedia.org/wiki/Rsync" target="_blank"><code>rsync</code>.<small>&#x1F517;</small></a>
+<code id="remote">-remote</code> -
+A remote source/destination specfication as used by <a href="https://en.wikipedia.org/wiki/Rsync" target="_blank"><code>rsync</code>.<small>&#x1F517;</small></a>
 </div>
 <ul class="jre-gen-group">
   <li class="jre-gen-item">
@@ -267,7 +267,7 @@ A remote source/destination specifification as used by <a href="https://en.wikip
 </ul>
 
 <div class="arg-description">
-<code>-promote</code> -
+<code id="promote">-promote</code> -
 The local filesystem location of the simple p2 update site to promote, or a URL for the remote p2 update site to promote.
 The promotion is done as specified by the <code>-build-type</code>.
 Note in particular that release builds <b>do not</b> promote the specified site.
@@ -281,7 +281,7 @@ Note in particular that release builds <b>do not</b> promote the specified site.
 </ul>
 
 <div class="arg-description">
-<code>-baseline-url</code> -
+<code id="baseline-url">-baseline-url</code> -
 The URL from which to check for baseline replacements for the artifacts of the <code>-promote</code>site.
 </div>
 <ul class="jre-gen-group">
@@ -293,7 +293,7 @@ The URL from which to check for baseline replacements for the artifacts of the <
 </ul>
 
 <div class="arg-description">
-<code>-promote-products</code> -
+<code id="promote-products">-promote-products</code> -
 The local filesystem folder location of the products, generally those produced by Tycho, to promote along with the update site.
 The product names are stored in the repository property <code>products</code>.
 This is generally used only for the update sites of a product.
@@ -309,7 +309,7 @@ A download link for the each products will be available in the generated index.
 </ul>
 
 <div class="arg-description">
-<code>-downloads</code> -
+<code id="downloads">-downloads</code> -
 The local filesystem files of so-called downloads to promote and maintain along with the update site.
 These will be maintained in a subfolder called <code>downloads</code> nested within the update site.
 A download link for the each artfiact will be available in the generated index.
@@ -325,7 +325,7 @@ The file names will be stored in the repository property <code>downloads</code>.
 </ul>
 
 <div class="arg-description">
-<code>-version-iu</code> -
+<code id="version-iu">-version-iu</code> -
 An ID prefix used to select or one more installable units with an ID with that prefix as the installable units whose largest version determines the logical version of the repository as a whole.
 Typically this a feature, particularly an SDK feature.
 If neither this nor <code>-version-iu-pattern</code> are specified, all installable will be considered which is likely to be inappropriate.
@@ -340,7 +340,7 @@ If neither this nor <code>-version-iu-pattern</code> are specified, all installa
 </ul>
 
 <div class="arg-description">
-<code>-version-iu-pattern</code> -
+<code id="version-iu-pattern">-version-iu-pattern</code> -
 A regular expression used to select or one more installable units with a matching ID as the installable units whose largest version determines the logical version of the repository as a whole.
 If neither this nor <code>-version-iu</code> are specified, all installable will be considered which is likely to be inappropriate.
 </div>
@@ -354,7 +354,7 @@ If neither this nor <code>-version-iu</code> are specified, all installable will
 </ul>
 
 <div class="arg-description">
-<code>-iu-filter-pattern</code> -
+<code id="iu-filter-pattern">-iu-filter-pattern</code> -
 A regular expression used to filter down the installable units, by ID, for which generated index information is to be produced.
 E.g., often one does not wish to list 3rd party installable units in the index.
 </div>
@@ -368,7 +368,7 @@ E.g., often one does not wish to list 3rd party installable units in the index.
 </ul>
 
 <div class="arg-description">
-<code>-primary-iu-filter-pattern</code> -
+<code id="primary-iu-filter-pattern">-primary-iu-filter-pattern</code> -
 A regular expression used to filter down the installable units, by ID, that are to be considered primary features, i.e., SDKs.
 This subset of primary features is presented on the root page and is shown in bold on all the other pages.
 If there are no primary features, then all features are presented on the root page.
@@ -384,7 +384,7 @@ If all features are primary, then none of them are shown in bold on all the othe
 </ul>
 
 <div class="arg-description">
-<code>-excluded-categories-pattern</code> -
+<code id="excluded-categories-pattern">-excluded-categories-pattern</code> -
 A regular expression used to filter away category installable units with matching ID.
 Such removal helps reduce the likelihood that a user will install something from that category.
 </div>
@@ -398,7 +398,7 @@ Such removal helps reduce the likelihood that a user will install something from
 </ul>
 
 <div class="arg-description">
-<code>-maven-wrapped-mapping</code> -
+<code id="maven-wrapped-mapping">-maven-wrapped-mapping</code> -
 Mappings for modifying or removing the <code>maven-wrapped-</code> (or <code>maven-</code>) installable unit properties, i.e.,
 for mapping a maven coordinate <code>groupId:artifactId:version</code> to its replacement subsitution, or to nothing, for removal. E.g., <br/>
 <code>org.eclipse.orbit:ant:(.*)</code><br/>
@@ -414,7 +414,7 @@ for mapping a maven coordinate <code>groupId:artifactId:version</code> to its re
 </ul>
 
 <div class="arg-description">
-<code>-label</code> -
+<code id="label">-label</code> -
 The label used as the project name in the generated index pages.
 </div>
 <ul class="jre-gen-group">
@@ -429,10 +429,10 @@ The label used as the project name in the generated index pages.
 </ul>
 
 <div class="arg-description">
-<code>-breadcrumb</code> -
-An arbitrary label with optional associated URL, separated by a space from the label, for use in the breadcumbs of each generated index page. E.g.,<br>
+<code id="breadcrumb">-breadcrumb</code> -
+An arbitrary label with optional associated URL, separated by a space from the label, for use in the breadcrumbs of each generated index page. E.g.,<br>
 <code>Justj https://eclipse.dev/justj</code><br/>
-This argument may be repeated to specify multiple breadcumbs.
+This argument may be repeated to specify multiple breadcrumbs.
 </div>
 <ul class="jre-gen-group">
   <li class="jre-gen-item">
@@ -446,7 +446,7 @@ This argument may be repeated to specify multiple breadcumbs.
 </ul>
 
 <div class="arg-description">
-<code>-archive</code> -
+<code id="archive">-archive</code> -
 An arbitrary label with an associated URL, separated by a space from the label, for use in the archive navigation of each generated index page. E.g.,<br>
 <code>0.0.1 - 0.10.12 https://example.org/downloads</code><br/>
 This argument may be repeated to specify multiple archive links.
@@ -464,7 +464,7 @@ The links are placed in a section labeled <code>Archive</code> immediately after
 </ul>
 
 <div class="arg-description">
-<code>-favicon</code> -
+<code id="favicon">-favicon</code> -
 A URL to an image that will be used as the favicon of each generated HTML index page.
 <ul class="jre-gen-group">
   <li class="jre-gen-item">
@@ -477,7 +477,7 @@ A URL to an image that will be used as the favicon of each generated HTML index 
 </div>
 
 <div class="arg-description">
-<code>-title-image</code> -
+<code id="title-image">-title-image</code> -
 A URL to an image that will be used as the title image of each generated HTML index page.
 </div>
 <ul class="jre-gen-group">
@@ -490,7 +490,7 @@ A URL to an image that will be used as the title image of each generated HTML in
 </ul>
 
 <div class="arg-description">
-<code>-body-image</code> -
+<code id="body-image">-body-image</code> -
 A URL to an image that will be used in the body of the generated HTML index page.
 </div>
 <ul class="jre-gen-group">
@@ -503,7 +503,7 @@ A URL to an image that will be used in the body of the generated HTML index page
 </ul>
 
 <div class="arg-description">
-<code>-mapping</code> -
+<code id="mapping">-mapping</code> -
 A name mapping to convert a lower case name to a title case name.  E.g., <br/>
 <code>justj->JustJ</code></br>
 This is used to help produce improved navigation labels in the generated index pages.
@@ -520,7 +520,7 @@ This arugment may be repeated to specify multiple mappings.
 </ul>
 
 <div class="arg-description">
-<code>-commit-mapping</code> -
+<code id="commit-mapping">-commit-mapping</code> -
 A regular expresion mapping to convert a source commit URL to a target commit URL. E.g., <br/>
 <code>(.*/)old-repo(.*)-&gt;$1new-repo$2</code><br/>
 This argument may be repeated to specify multiple mappings.
@@ -535,9 +535,9 @@ This argument may be repeated to specify multiple mappings.
 </ul>
 
 <div class="arg-description">
-<code>--exclude</code> -
-This argument and its associated value are passed directly as arguments to <code>rsyn</code>.
-This argument may be repeated to specify multiple folders to exclude from being transfered to or from the <code>-remote</code> host.
+<code id="exclude">--exclude</code> -
+This argument and its associated value are passed directly as arguments to <code>rsync</code>.
+This argument may be repeated to specify multiple folders to exclude from being transferred to or from the <code>-remote</code> host.
 </div>
 <ul class="jre-gen-group">
   <li class="jre-gen-item">
@@ -549,12 +549,12 @@ This argument may be repeated to specify multiple folders to exclude from being 
 </ul>
 
 <div class="arg-description">
-<code>-summary</code> -
+<code id="summary">-summary</code> -
 The number of update site columns in the summary table.
-Each row of the tabular summary corresonds to an bundle symbolic name of an installable unit with an ID matching the <code>-summary-iu-pattern</code>.
+Each row of the tabular summary corresponds to a bundle symbolic name of an installable unit with an ID matching the <code>-summary-iu-pattern</code>.
 Each column corresponds to an update site, starting with <code>nightly/latest</code>, <code>milestone/latest</code>, and then the releases from the most recent to the oldest,
 where the specified value for <code>-summary</code> truncates that list.
-Each cells displays the version(s) of the installable unit(s) with the corresonding bundle symbolic name in the corresponding site.
+Each cell displays the version(s) of the installable unit(s) with the corresponding bundle symbolic name in the corresponding site.
 </div>
 <ul class="jre-gen-group">
 </ul>
@@ -568,7 +568,7 @@ Each cells displays the version(s) of the installable unit(s) with the corresond
 </ul>
 
 <div class="arg-description">
-<code>-summary-iu-pattern</code> -
+<code id="summary-iu-pattern">-summary-iu-pattern</code> -
 A regular expression used to select the installable units with matching ID for display in the <code>-summary</code> table.
 </div>
 <ul class="jre-gen-group">
@@ -583,7 +583,7 @@ A regular expression used to select the installable units with matching ID for d
 
 
 <div class="arg-description">
-<code>-simrel-alias</code> -
+<code id="simrel-alias">-simrel-alias</code> -
 Can be used with a repository where the logical version of the repository, via <code>-version-iu</code> or <code>-version-iu-pattern</code>,
 can be mapped onto an <a href="http://github.com/eclipse-simrel">Eclipse SimRel</a> version,
 e.g., <code>4.30</code> maps to <code>2023-12</code>.
@@ -597,15 +597,15 @@ This provides a permanent and stable URL at the <b>start</b> of each release cyc
 </ul>
 
 <div class="arg-description">
-<code>-bree</code> -
-Can be used to generate details about the minimum execution environment of eaach bundle.
+<code id="bree">-bree</code> -
+Can be used to generate details about the minimum execution environment of each bundle.
 The details are generated where the bundle's version is generated.
 </div>
 <ul class="jre-gen-group">
 </ul>
 
 <div class="arg-description">
-<code>-super</code> -
+<code id="super">-super</code> -
 This is used by JustJ and is not generally intended to be reused, so don't use it.
 </div>
 <ul class="jre-gen-group">
@@ -617,7 +617,7 @@ This is used by JustJ and is not generally intended to be reused, so don't use i
 </ul>
 
 <div class="arg-description">
-<code>-latestVersionOnly</code> -
+<code id="latestVersionOnly">-latestVersionOnly</code> -
 Whether to mirror only the latest version or all versions when mirroring an update site.
 This is highly unlikely to be used.
 </div>

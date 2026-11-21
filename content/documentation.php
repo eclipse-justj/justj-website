@@ -51,7 +51,7 @@ Of course you must specify the update site that contains this JRE
 and naturally you can choose the specific JRE most suitable for the needs and size constraints of your specific product, e.g.,
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/jres/17/updates/release/latest" target="_blank">https://download.eclipse.org/justj/jres/17/updates/release/latest</a>
+<a href="https://download.eclipse.org/justj/jres/25/updates/release/latest" target="_blank">https://download.eclipse.org/justj/jres/25/updates/release/latest</a>
 </blockquote>
 <p>
 The update site's features describe each JRE and the update site's bundles document, in the <code>Properties</code> section, the jlink instructions used to build that JRE as well as the modules and packages available for that JRE to help you choose what's most appropriate for your product.
@@ -152,7 +152,7 @@ JustJ has automated this dependency analysis via the <code><a href="https://ci.e
 which generates <a href="https://download.eclipse.org/justj/jdeps/">a detailed report</a>.
 </p>
 <p>
-Reducing the JRE size is particularly important for smaller applications such as the <a href="https://wiki.eclipse.org/Eclipse_Installer">Eclipse Installer</a> 
+Reducing the JRE size is particularly important for smaller applications such as the <a href="https://eclipse.dev/oomph/?file=Eclipse_Installer.md">Eclipse Installer</a> 
 which is currently roughly 53MB in size.
 Shipping that with a 70MB JRE would be a significant bloat.
 Furthermore, most users treat the installer as disposable, repeatedly downloading a new one with each release.
@@ -169,7 +169,7 @@ it needs to be updated only whenever there is a new Java release.
 The result of jdeps analysis is used to produce the JREs with <code>.minimal</code> qualifier on the download site:
 </p>
 <blockquote>
-<a href="https://download.eclipse.org/justj/jres/17/downloads/latest/">https://download.eclipse.org/justj/jres/17/downloads/latest/</a>
+<a href="https://download.eclipse.org/justj/jres/25/downloads/latest/">https://download.eclipse.org/justj/jres/25/downloads/latest/</a>
 </blockquote>
 <p>
 Each <code>xyz.stripped</code> version, i.e., with debug information stripped and excluding the <code>src.jar</code> with sources used only for debuggin, are less than 1/2 the size of the corresponding <code>xyz</code> version.

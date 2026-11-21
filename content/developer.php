@@ -33,11 +33,6 @@
 <code><a href="https://ci.eclipse.org/justj/">https://ci.eclipse.org/justj/</a></code>
 </p>
 
-<h2>Wiki</h2>
-<p>
-<code><a href="https://wiki.eclipse.org/JustJ">https://wiki.eclipse.org/JustJ</a></code>
-</p>
-
 <h2 id="contributing">Contributing</h2>
 <p>
 To best contribute to Eclipse in general, and to JustJ specifically, please do the following:

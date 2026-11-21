@@ -107,6 +107,6 @@ $App->AddExtraHtmlHeader($style);
 // src="script.min.js"></script>');
 
 // Generate the web page
-$App->generatePage($Theme, $Menu, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html, $Breadcrumb);
+$App->generatePage($Theme, NULL, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html, $Breadcrumb);
 
 ?>

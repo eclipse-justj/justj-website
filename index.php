@@ -14,9 +14,14 @@
  */
 
 error_reporting(0);
-$page = $_GET["page"];
-if (!$page) {
-  $page = "index";
+// ini_set('display_errors', '1');
+// ini_set('display_startup_errors', '1');
+// error_reporting(E_ALL);
+
+if (isset($_GET['page'])) {
+  $page = $_GET['page'];
+} else {
+  $page = 'index';
 }
 
 $serverName = $_SERVER['SERVER_NAME'];
@@ -335,6 +340,10 @@ span.detail {
   margin-bottom: 1ex;
 }
 
+.header_nav img {
+	width: 60%;
+}
+
 </style>
 
 EOSTYLE;
@@ -373,6 +382,6 @@ $App->AddExtraHtmlHeader($script);
 // src="script.min.js"></script>');
 
 // Generate the web page
-$App->generatePage($Theme, $Menu, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html, $Breadcrumb);
+$App->generatePage($Theme, NULL, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html, $Breadcrumb);
 
 ?>
